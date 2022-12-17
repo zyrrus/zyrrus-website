@@ -1,0 +1,17 @@
+{
+  "home": {
+    "name": "Zeke Abshire",
+    "title": "Full-Stack Software Developer",
+    "email": "zekeabshire@gmail.com",
+    "github": "https://github.com/zyrrus/",
+    "linkedin": "https://www.linkedin.com/in/zyrrus/",
+    "intro": [
+      "Hi, my name is [Your Name] and I am a [Your Title or Role] at [Your Company or Organization]. With [Number] years of experience in the field, I have developed a strong set of skills in [List Your Skills].",
+      "In my current role, I am responsible for [List Your Responsibilities]. In my free time, I enjoy [List Your Hobbies or Interests] and am always looking for new opportunities to learn and grow as a professional.",
+      "I created this website to showcase my work and share my thoughts on [Your Professional Interests or Focus]. I hope you find it useful and interesting, and please feel free to contact me if you have any questions or want to learn more."
+    ]
+  },
+  "about": {},
+  "projects": {},
+  "work": {}
+}
