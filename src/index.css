@@ -21,7 +21,15 @@ body, #root {
     bottom: 0;
     left: 0;
     border-right: 4px solid;
-    border-image: linear-gradient(to bottom, #EA6962 0%, #E78A4E 20%, #A9B665 40%, #89B482 60%, #7DAEA3 80%, #D3869B 100%) 1 100%;
+    border-image: linear-gradient(
+        to bottom,
+        #EA6962 0%, 
+        #E78A4E 20%, 
+        #A9B665 40%, 
+        #89B482 60%, 
+        #7DAEA3 80%, 
+        #D3869B 100%
+    ) 1 100%;
 }
 
 .selected-highlight {

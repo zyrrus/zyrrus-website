@@ -5,16 +5,17 @@ module.exports = {
     container: {
       center: true,
       padding: "1rem",
-      screens: {
-        xs: "400px",
-        sm: "600px",
-        md: "728px",
-        lg: "984px",
-      },
+    },
+    screens: {
+      xs: "400px",
+      sm: "600px",
+      md: "728px",
+      lg: "984px",
     },
     extend: {
       colors: {
         bg: "#151515",
+        mix: "#ffffff88",
         fg: "#ffffff",
         "gruv-red": "#EA6962",
         "gruv-yel": "#E78A4E",

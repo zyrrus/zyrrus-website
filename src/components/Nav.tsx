@@ -1,11 +1,10 @@
 import { Routes } from "data/constants";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 type Props = {};
 
 export default function Nav({}: Props) {
-  const [activeRoute, setActiveRoute] = useState<string>(Routes[0].name);
+  const location = useLocation();
 
   return (
     <nav className="w-full">
@@ -15,20 +14,12 @@ export default function Nav({}: Props) {
             key={index}
             className={
               "text-base uppercase " +
-              (activeRoute === route.name
+              (location.pathname === route.route
                 ? "selected-highlight font-semibold opacity-100"
                 : "font-normal opacity-50")
             }
           >
-            <NavLink
-              to={route.route}
-              className={({ isActive }) => {
-                if (isActive) setActiveRoute(route.name);
-                return "";
-              }}
-            >
-              {route.name}
-            </NavLink>
+            <NavLink to={route.route}>{route.name}</NavLink>
           </li>
         ))}
       </ul>
