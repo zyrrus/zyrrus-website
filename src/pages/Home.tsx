@@ -1,11 +1,9 @@
 import React from "react";
 import text from "data/text.json";
 
-type Props = {};
-
-export default function Home({}: Props) {
+export default function Home() {
   return (
-    <div className="flex flex flex-col align-middle">
+    <div className="flex flex-col align-middle">
       <h1
         style={{ whiteSpace: "pre-line" }}
         className="mt-[20vh] text-3xl font-semibold xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl"

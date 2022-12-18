@@ -1,9 +1,7 @@
 import { Routes } from "data/constants";
 import { NavLink, useLocation } from "react-router-dom";
 
-type Props = {};
-
-export default function Nav({}: Props) {
+export default function Nav() {
   const location = useLocation();
 
   return (
