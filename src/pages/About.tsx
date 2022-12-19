@@ -69,7 +69,7 @@ export default function About() {
 
       <h2 className="py-2 text-3xl">Awards</h2>
       <div className="flex flex-row">
-        <ul className="my-5 ml-[40vw] border-l-2 border-fg pl-6 text-lg text-mix xs:ml-[30vw] md:ml-[20vw]">
+        <ul className="my-5 ml-[40%] border-l-2 border-fg pl-6 text-lg text-mix xs:ml-[30%] md:ml-[20%] lg:ml-[15%]">
           <li data-semester="Fall 2022" className="award-element my-5">
             Dean's List
           </li>
