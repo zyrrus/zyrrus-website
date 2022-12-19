@@ -11,10 +11,10 @@ export default function Nav() {
           <li
             key={index}
             className={
-              "text-base uppercase " +
+              "text-base uppercase hover:text-fg " +
               (location.pathname === route.route
-                ? "selected-highlight font-semibold opacity-100"
-                : "font-normal opacity-50")
+                ? "selected-highlight font-semibold text-fg"
+                : "font-normal text-mix")
             }
           >
             <NavLink to={route.route}>{route.name}</NavLink>
