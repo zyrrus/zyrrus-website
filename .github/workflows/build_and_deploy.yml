@@ -1,5 +1,5 @@
 # .github/workflows/publish.yml
-name: Generate a build and push to another branch
+name: Build, Push, Deploy
 
 on:
   push:
@@ -28,6 +28,7 @@ jobs:
           FOLDER: build # The directory where your assets are generated
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
           MESSAGE: "Build: ({sha}) {msg}" # The commit message
+      
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
