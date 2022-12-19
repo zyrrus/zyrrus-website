@@ -11,9 +11,54 @@ export default function About() {
         ranging from programming language interpreters to MVPs for startups.
       </p>
 
-      {/* <h2 className="py-2 text-3xl">Skills</h2>
-      <p className="py-3 text-lg leading-loose text-mix"></p> 
-      columns: languages, frameworks, tools, skills */}
+      <h2 className="py-2 text-3xl">Skills</h2>
+      {/* columns: languages, frameworks, tools, skills */}
+      <div className="grid grid-cols-1 gap-y-6 py-3 text-lg text-mix xs:grid-cols-2 md:grid-cols-4">
+        {/* <div className="flex flex-col gap-x-8 gap-y-3 py-3 text-lg text-mix md:flex-row md:justify-between"> */}
+        <div>
+          <h4 className="mb-3 text-xl text-fg">Languages</h4>
+          <ul className="list-inside list-disc">
+            <li>Python</li>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>Dart</li>
+            <li>C#</li>
+            <li>Java</li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="mb-3 text-xl text-fg">Frameworks</h4>
+          <ul className="list-inside list-disc">
+            <li>React</li>
+            <li>Flutter</li>
+            <li>TailwindCSS</li>
+            <li>SCSS</li>
+            <li>MUI</li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="mb-3 text-xl text-fg">Tools</h4>
+          <ul className="list-inside list-disc">
+            <li>Firebase</li>
+            <li>Git</li>
+            <li>GitHub Actions</li>
+            <li>Jira</li>
+            <li>Figma</li>
+            <li>Blender</li>
+            <li>Inkscape</li>
+            <li>Gimp</li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="mb-3 text-xl text-fg">Experience</h4>
+          <ul className="list-inside list-disc">
+            <li>Team Leadership</li>
+            <li>Planning + Architecture</li>
+            <li>Data Science</li>
+            <li>Agile/Scrum</li>
+          </ul>
+        </div>
+      </div>
 
       <h2 className="py-2 text-3xl">Education</h2>
       <p className="py-3 text-lg leading-loose text-mix">
