@@ -93,3 +93,33 @@ html, body, #root {
     border: 8px solid;
     @apply border-bg;
 }
+
+/* Awards Timeline */
+
+.award-element {
+    position: relative;
+}
+.award-element::before {
+    --award-padding: 1.5rem;
+
+    content: attr(data-semester);
+    position: absolute;
+    right: calc(100% + var(--award-padding) * 2);
+    width: max-content;
+}
+.award-element::after {
+    --size: 20px;
+    --line-size: 2px;
+    --award-padding: 1.5rem;
+    
+    content: "";
+    position: absolute;
+    right: calc(100% + var(--award-padding) - (var(--size) / 2) + (var(--line-size) / 2));
+    top: 0;
+    width: var(--size);
+    height: var(--size);
+    background-color: white;
+    border-radius: 99rem;
+    border: 8px solid;
+    @apply border-bg;
+}

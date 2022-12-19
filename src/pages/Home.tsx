@@ -4,7 +4,7 @@ import { RxDoubleArrowDown } from "react-icons/rx";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col align-middle">
+    <>
       <h1 className="mt-[20vh] text-3xl font-semibold leading-normal xs:text-4xl xs:leading-normal sm:text-6xl sm:leading-snug md:text-7xl md:leading-snug lg:text-8xl lg:leading-tight">
         Full-Stack
         <br />
@@ -56,6 +56,6 @@ export default function Home() {
           please don't hesitate to contact me.
         </p>
       </div>
-    </div>
+    </>
   );
 }
