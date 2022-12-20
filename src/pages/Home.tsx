@@ -35,7 +35,7 @@ export default function Home() {
 
       <div
         id="intro"
-        className="absolute top-[100vh] flex h-screen flex-col gap-y-10 py-8 text-lg leading-loose text-mix"
+        className="container absolute left-1/2 top-[100vh] flex h-screen translate-x-[-50%] flex-col gap-y-10 py-8 text-lg leading-loose text-mix"
       >
         <p>
           Hi, my name is Zeke Abshire, and I am currently a Software Developer
