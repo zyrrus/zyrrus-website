@@ -1,0 +1,4 @@
+- name: Home
+  url: http://localhost:3000
+- name: About
+  url: http://localhost:3000/about
