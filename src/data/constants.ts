@@ -3,11 +3,11 @@ type Route = {
   route: string;
 };
 
-const Routes = [
+const Routes: Route[] = [
   { name: "Home", route: "/" },
   { name: "About", route: "/about" },
   { name: "Projects", route: "/projects" },
-  { name: "Work", route: "/work" },
-] as Route[];
+  //   { name: "Work", route: "/work" },
+];
 
 export { Routes };
