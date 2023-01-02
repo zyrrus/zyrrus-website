@@ -132,3 +132,41 @@ body,
   border: 8px solid;
   @apply border-bg;
 }
+
+/* Project Icon Backdrop */
+
+.icon-backdrop {
+  z-index: 0;
+}
+
+.icon-backdrop::after {
+  @apply bg-bg;
+  content: "";
+  position: absolute;
+  width: calc(100% + 4rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 99rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -25%);
+  z-index: -1;
+}
+
+/* Divider */
+
+.small-divider::after {
+  --size: 20px;
+  --line-size: 2px;
+
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: var(--size);
+  height: var(--size);
+  background-color: white;
+  border-radius: 99rem;
+  border: 8px solid;
+  @apply border-bg;
+}

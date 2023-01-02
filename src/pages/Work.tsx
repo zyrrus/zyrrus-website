@@ -1,5 +1,6 @@
-import React from "react";
+import ProjectList from "components/ProjectList";
+import { JobList } from "data/projects";
 
 export default function Work() {
-  return <div>Work</div>;
+  return <ProjectList title="Employment" projects={JobList} />;
 }
