@@ -82,9 +82,7 @@ export default function Footer() {
                       key={i + "_" + j}
                       className="transition-colors hover:text-fg"
                     >
-                      <NavLink to={{ pathname: "/about", hash: "#education" }}>
-                        {cell.name}
-                      </NavLink>
+                      <NavLink to={cell.route}>{cell.name}</NavLink>
                     </td>
                   )
                 )}
