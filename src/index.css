@@ -1,43 +1,40 @@
 @tailwind base;
 
 @layer base {
-    html {
-      @apply text-fg;
-    } 
+  html {
+    @apply text-fg;
   }
+}
 
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
-    @apply bg-bg;
-    @apply min-h-screen;
-    @apply font-lato;
-    scroll-behavior: smooth;
+html,
+body,
+#root {
+  @apply bg-bg;
+  @apply min-h-screen;
+  @apply font-lato;
+  scroll-behavior: smooth;
 }
 
-/* Side Gradient */
+/* Gradient */
 
 .custom-gradient {
-    --angle: 0deg;
-    --border-width: 4px;
+  --angle: 0deg;
+  --border-width: 4px;
 
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: -100%;
-    right: calc(100% - var(--border-width)); 
-    border-right: var(--border-width) solid;
-    border-image: linear-gradient(
-        var(--angle),
-        #EA6962 0%, 
-        #E78A4E 20%, 
-        #A9B665 40%, 
-        #89B482 60%, 
-        #7DAEA3 80%, 
-        #D3869B 100%
-    ) 1 ;
-    animation: 10s rotate linear infinite;
+  border-image: linear-gradient(
+      var(--angle),
+      #ea6962 0%,
+      #e78a4e 20%,
+      #a9b665 40%,
+      #89b482 60%,
+      #7daea3 80%,
+      #d3869b 100%
+    )
+    1;
+  animation: 10s rotate linear infinite;
 }
 
 @keyframes rotate {
@@ -47,79 +44,91 @@ html, body, #root {
 }
 
 @property --angle {
-  syntax: '<angle>';
+  syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
+}
+
+/* Side Gradient */
+.side-gradient {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  right: calc(100% - var(--border-width));
+  border-right: var(--border-width) solid;
 }
 
 /* Down Arrow */
 
 .floating {
-    transform: translateY(0px);
-	animation: float 3s ease-in-out infinite;
+  transform: translateY(0px);
+  animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-	0% {
-		transform: translateY(0px);
-	}
-	50% {
-		transform: translateY(-20px);
-	}
-	100% {
-		transform: translateY(0px);
-	}
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* Navigation  */
 
 .selected-highlight {
-    position: relative;
+  position: relative;
 }
 
 .selected-highlight::after {
-    --size: 20px;
-    --line-size: 2px;
-    
-    content: "";
-    position: absolute;
-    top: calc(100% + 1rem + (var(--line-size) / 2));
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: var(--size);
-    height: var(--size);
-    background-color: white;
-    border-radius: 99rem;
-    border: 8px solid;
-    @apply border-bg;
+  --size: 20px;
+  --line-size: 2px;
+
+  content: "";
+  position: absolute;
+  top: calc(100% + 1rem + (var(--line-size) / 2));
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: var(--size);
+  height: var(--size);
+  background-color: white;
+  border-radius: 99rem;
+  border: 8px solid;
+  @apply border-bg;
 }
 
 /* Awards Timeline */
 
 .award-element {
-    position: relative;
+  position: relative;
 }
 .award-element::before {
-    --award-padding: 1.5rem;
+  --award-padding: 1.5rem;
 
-    content: attr(data-semester);
-    position: absolute;
-    right: calc(100% + var(--award-padding) * 2);
-    width: max-content;
+  content: attr(data-semester);
+  position: absolute;
+  right: calc(100% + var(--award-padding) * 2);
+  width: max-content;
 }
 .award-element::after {
-    --size: 20px;
-    --line-size: 2px;
-    --award-padding: 1.5rem;
-    
-    content: "";
-    position: absolute;
-    right: calc(100% + var(--award-padding) - (var(--size) / 2) + (var(--line-size) / 2));
-    top: 0;
-    width: var(--size);
-    height: var(--size);
-    background-color: white;
-    border-radius: 99rem;
-    border: 8px solid;
-    @apply border-bg;
+  --size: 20px;
+  --line-size: 2px;
+  --award-padding: 1.5rem;
+
+  content: "";
+  position: absolute;
+  right: calc(
+    100% + var(--award-padding) - (var(--size) / 2) + (var(--line-size) / 2)
+  );
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  background-color: white;
+  border-radius: 99rem;
+  border: 8px solid;
+  @apply border-bg;
 }
