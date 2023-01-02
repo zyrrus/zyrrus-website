@@ -97,12 +97,10 @@ export default function About() {
       <p className="my-3 text-lg leading-loose text-mix">
         I am passionate about using technology to solve problems and make a
         positive impact, and I am always looking for new challenges and
-        opportunities to learn and grow. In my free time, I enjoy playing
-        musical instruments and learning new languages. I've been playing some
-        form of stringed instrument since around 2014, and I had the pleasure of
-        playing bass for my high school's show choir. I've also been learning
-        French since kindergarten, and I've been casually learning other
-        languages since around the same time I started playing instruments.
+        opportunities to learn and grow. In my free time, I play musical
+        instruments and learn new languages. I've been playing stringed
+        instruments for about 7 years now, and I've been learning French since
+        kindergarten and many other languages recently.
       </p>
 
       <p className="my-3 text-lg leading-loose text-mix">

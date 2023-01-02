@@ -74,7 +74,7 @@ const ProjectsList: {
           "https://www.figma.com/file/IRzlxzz3J1E5khOpmk2KSN/Parallel?node-id=0%3A1&t=PuRMisg0rAGYa6GO-1",
       },
       description: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate placeat odio facilis id nesciunt nulla possimus praesentium blanditiis ut distinctio, quisquam beatae accusamus, officia ratione atque dignissimos molestias dolor voluptas quaerat ad iure sapiente hic adipisci. Consequuntur atque quisquam cumque placeat temporibus vero sint mollitia harum eligendi, ea facilis nobis.",
+        "Parallel is a platform that connects educators and animators to create new educational content for YouTube or other platforms. This was my first project using React, Firebase, and Figma, and I gained valuable experience in full-stack development as a result. The project was put in a temporarily complete state, but I plan on reviving it in the near future. I'm excited to continue working on Parallel and to see it fully realized after gaining hundreds of hours of experience since its original completion.",
       ],
       image: fillerImage,
     },
@@ -85,7 +85,7 @@ const ProjectsList: {
       date: "Dec 2022 - Present",
       links: {},
       description: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate placeat odio facilis id nesciunt nulla possimus praesentium blanditiis ut distinctio, quisquam beatae accusamus, officia ratione atque dignissimos molestias dolor voluptas quaerat ad iure sapiente hic adipisci. Consequuntur atque quisquam cumque placeat temporibus vero sint mollitia harum eligendi, ea facilis nobis.",
+        "I'm currently working on a personal project called Flurry, a language learning app that aims to combine the best features of the most popular apps while remaining free with an optional, unobtrusive paid plan. I spent much of the first month researching and testing a handful of the most popular language learning apps and teaching methods to gather ideas and inspiration for Flurry. I'm excited to begin developing this project further and to bring a unique and valuable language learning experience to users.",
       ],
       image: fillerImage,
     },
@@ -99,10 +99,10 @@ const JobList: Project[] = [
     stack: "React, MUI, Firebase, TypeScript, Jira",
     date: "November 2022 - Present",
     links: {
-      //   live: "https://vigilus.com",
+      live: "https://vigilus.com",
     },
     description: [
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate placeat odio facilis id nesciunt nulla possimus praesentium blanditiis ut distinctio, quisquam beatae accusamus, officia ratione atque dignissimos molestias dolor voluptas quaerat ad iure sapiente hic adipisci. Consequuntur atque quisquam cumque placeat temporibus vero sint mollitia harum eligendi, ea facilis nobis.",
+      "I primarily work on the company website using React, MUI, and Firebase. I have gained valuable experience working in an agile environment, where I was able to apply my technical skills and contribute to the development of the website.",
     ],
   },
   // NRL
@@ -112,7 +112,7 @@ const JobList: Project[] = [
     date: "June 2022 - November 2022",
     links: {},
     description: [
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate placeat odio facilis id nesciunt nulla possimus praesentium blanditiis ut distinctio, quisquam beatae accusamus, officia ratione atque dignissimos molestias dolor voluptas quaerat ad iure sapiente hic adipisci. Consequuntur atque quisquam cumque placeat temporibus vero sint mollitia harum eligendi, ea facilis nobis.",
+      "I had the opportunity to work on a project to migrate a 20-year-old legacy ArcMap plugin to ArcGIS Pro. I rewrote the project using C# and the ArcGIS Pro SDK, while working with WPF and the MVVC pattern. It was a challenging but rewarding experience, and I gained valuable insight and practical skills for maintaining and refactoring legacy systems.",
     ],
   },
 ];
