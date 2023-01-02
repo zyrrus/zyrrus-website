@@ -4,27 +4,10 @@ import { Routes } from "data/constants";
 import { NavLink } from "react-router-dom";
 
 export default function Footer() {
-  function convertSubRoutesToRows() {
-    const maxNumSubRoutes: number =
-      Routes.reduce((routeA, routeB) =>
-        (routeA.subroutes?.length ?? 0) > (routeB.subroutes?.length ?? 0)
-          ? routeA
-          : routeB
-      ).subroutes?.length ?? 0;
-
-    const subroutes = Array.from(Array(maxNumSubRoutes).keys()).map((i) =>
-      Routes.map((route) =>
-        route.subroutes === undefined ? null : route.subroutes[i]
-      )
-    );
-
-    return subroutes;
-  }
-
   return (
     <div className="flex flex-col gap-y-12 py-16 md:gap-y-6">
       <Bar />
-      <div className="mx-10 flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
+      <div className="items-left mx-4 flex flex-col items-start gap-8 xs:mx-10 xs:items-center md:flex-row md:items-start md:justify-between">
         {/* Left Side */}
         <div className="flex flex-col gap-y-3">
           <div className=" flex w-full flex-row items-center gap-x-3">
@@ -58,38 +41,27 @@ export default function Footer() {
         </div>
 
         {/* Right Side */}
-        <table className="-mx-5 h-max w-max table-fixed border-separate border-spacing-x-10 border-spacing-y-2 text-mix">
-          <thead className="text-left font-semibold">
-            <tr>
-              {Routes.map((route) => (
-                <th
-                  key={route.name}
-                  className="transition-colors hover:text-fg"
+        <div className="flex flex-col gap-y-6 gap-x-8 text-mix xs:flex-row">
+          {Routes.map((route) => (
+            <div key={route.name} className="flex grow flex-col gap-y-2">
+              <NavLink
+                to={route.route}
+                className="font-semibold transition-colors hover:text-fg"
+              >
+                {route.name}
+              </NavLink>
+              {route.subroutes?.map((subroute, j) => (
+                <NavLink
+                  key={j}
+                  className="text-sm font-light transition-colors hover:text-fg"
+                  to={subroute.route}
                 >
-                  <NavLink to={route.route}>{route.name}</NavLink>
-                </th>
+                  {subroute.name}
+                </NavLink>
               ))}
-            </tr>
-          </thead>
-          <tbody className="text-sm font-light">
-            {convertSubRoutesToRows().map((row, i) => (
-              <tr key={i}>
-                {row.map((cell, j) =>
-                  cell === null ? (
-                    <td key={i + "_" + j}></td>
-                  ) : (
-                    <td
-                      key={i + "_" + j}
-                      className="transition-colors hover:text-fg"
-                    >
-                      <NavLink to={cell.route}>{cell.name}</NavLink>
-                    </td>
-                  )
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
