@@ -1,20 +1,18 @@
-import React from "react";
-
 export default function About() {
   return (
     <>
-      <h1 className="pt-16 text-4xl">About Me</h1>
-      <p className="py-3 text-lg leading-loose text-mix">
+      <h1 className="my-6 mt-14 text-4xl">About Me</h1>
+      <p className="my-3 text-lg leading-loose text-mix">
         Hello! My name is Zeke Abshire and I am a software developer with over 5
-        years of experience. I have a strong background in data science and
-        full-stack web development and have worked on a variety of projects
+        years of experience. I have a strong background in full-stack web
+        development and data science, and I have worked on a variety of projects
         ranging from programming language interpreters to MVPs for startups.
       </p>
 
-      <h2 className="py-2 text-3xl">Skills</h2>
-      {/* columns: languages, frameworks, tools, skills */}
-      <div className="grid grid-cols-1 gap-y-6 py-3 text-lg text-mix xs:grid-cols-2 md:grid-cols-4">
-        {/* <div className="flex flex-col gap-x-8 gap-y-3 py-3 text-lg text-mix md:flex-row md:justify-between"> */}
+      <h2 className="my-4 mt-10 text-3xl" id="skills">
+        Skills
+      </h2>
+      <div className="my-3 grid grid-cols-1 gap-y-6 gap-x-6 text-lg text-mix xs:grid-cols-2 md:grid-cols-4">
         <div>
           <h4 className="mb-3 text-xl text-fg">Languages</h4>
           <ul className="list-inside list-disc">
@@ -60,14 +58,18 @@ export default function About() {
         </div>
       </div>
 
-      <h2 className="py-2 text-3xl">Education</h2>
-      <p className="py-3 text-lg leading-loose text-mix">
+      <h2 className="my-4 mt-10 text-3xl" id="education">
+        Education
+      </h2>
+      <p className="my-3 text-lg leading-loose text-mix">
         I'm currently pursing two bachelor's degrees from Louisiana State
         University: one in Computer Science and one in Math. I will be
         graduating in May 2023, and my GPA is 4.04 (as of the end of Fall 2022).
       </p>
 
-      <h2 className="py-2 text-3xl">Awards</h2>
+      <h2 className="my-4 mt-10 text-3xl" id="awards">
+        Awards
+      </h2>
       <div className="flex flex-row">
         <ul className="my-5 ml-[40%] border-l-2 border-fg pl-6 text-lg text-mix xs:ml-[30%] md:ml-[20%] lg:ml-[15%]">
           <li data-semester="Fall 2022" className="award-element my-5">
@@ -89,8 +91,10 @@ export default function About() {
         </ul>
       </div>
 
-      <h2 className="py-2 text-3xl">Hobbies</h2>
-      <p className="py-3 text-lg leading-loose text-mix">
+      <h2 className="my-4 mt-10 text-3xl" id="hobbies">
+        Hobbies
+      </h2>
+      <p className="my-3 text-lg leading-loose text-mix">
         I am passionate about using technology to solve problems and make a
         positive impact, and I am always looking for new challenges and
         opportunities to learn and grow. In my free time, I enjoy playing
@@ -101,7 +105,7 @@ export default function About() {
         languages since around the same time I started playing instruments.
       </p>
 
-      <p className="py-3 pb-[50vh] text-lg leading-loose text-mix">
+      <p className="my-3 text-lg leading-loose text-mix">
         Thank you for visiting my portfolio!
       </p>
     </>
