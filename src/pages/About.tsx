@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <>
-      <h1 className="my-6 mt-14 text-4xl">About Me</h1>
+      <h1 className="my-6 mt-14 text-4xl font-semibold">About Me</h1>
       <p className="my-3 text-lg leading-loose text-mix">
         Hello! My name is Zeke Abshire and I am a software developer with over 5
         years of experience. I have a strong background in full-stack web
@@ -9,12 +9,12 @@ export default function About() {
         ranging from programming language interpreters to MVPs for startups.
       </p>
 
-      <h2 className="my-4 mt-10 text-3xl" id="skills">
+      <h2 className="my-4 mt-10 text-3xl font-semibold" id="skills">
         Skills
       </h2>
       <div className="my-3 grid grid-cols-1 gap-y-6 gap-x-6 text-lg text-mix xs:grid-cols-2 md:grid-cols-4">
         <div>
-          <h4 className="mb-3 text-xl text-fg">Languages</h4>
+          <h4 className="mb-3 text-xl font-semibold text-fg">Languages</h4>
           <ul className="list-inside list-disc">
             <li>Python</li>
             <li>JavaScript</li>
@@ -25,7 +25,7 @@ export default function About() {
           </ul>
         </div>
         <div>
-          <h4 className="mb-3 text-xl text-fg">Frameworks</h4>
+          <h4 className="mb-3 text-xl font-semibold text-fg">Frameworks</h4>
           <ul className="list-inside list-disc">
             <li>React</li>
             <li>Flutter</li>
@@ -35,7 +35,7 @@ export default function About() {
           </ul>
         </div>
         <div>
-          <h4 className="mb-3 text-xl text-fg">Tools</h4>
+          <h4 className="mb-3 text-xl font-semibold text-fg">Tools</h4>
           <ul className="list-inside list-disc">
             <li>Firebase</li>
             <li>Git</li>
@@ -48,7 +48,7 @@ export default function About() {
           </ul>
         </div>
         <div>
-          <h4 className="mb-3 text-xl text-fg">Experience</h4>
+          <h4 className="mb-3 text-xl font-semibold text-fg">Experience</h4>
           <ul className="list-inside list-disc">
             <li>Team Leadership</li>
             <li>Planning + Architecture</li>
@@ -58,7 +58,7 @@ export default function About() {
         </div>
       </div>
 
-      <h2 className="my-4 mt-10 text-3xl" id="education">
+      <h2 className="my-4 mt-10 text-3xl font-semibold" id="education">
         Education
       </h2>
       <p className="my-3 text-lg leading-loose text-mix">
@@ -67,7 +67,7 @@ export default function About() {
         graduating in May 2023, and my GPA is 4.04 (as of the end of Fall 2022).
       </p>
 
-      <h2 className="my-4 mt-10 text-3xl" id="awards">
+      <h2 className="my-4 mt-10 text-3xl font-semibold" id="awards">
         Awards
       </h2>
       <div className="flex flex-row">
@@ -91,7 +91,7 @@ export default function About() {
         </ul>
       </div>
 
-      <h2 className="my-4 mt-10 text-3xl" id="hobbies">
+      <h2 className="my-4 mt-10 text-3xl font-semibold" id="hobbies">
         Hobbies
       </h2>
       <p className="my-3 text-lg leading-loose text-mix">
