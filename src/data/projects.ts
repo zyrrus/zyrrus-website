@@ -1,5 +1,6 @@
 import fillerImage from "assets/missing-file.svg";
 import dropnoteImage from "assets/dropnote.png";
+import personalSiteImage from "assets/personal-website.png";
 
 type Project = {
   title: string;
@@ -46,7 +47,10 @@ const ProjectsList: {
         github: "https://github.com/zyrrus/zyrrus-website",
         live: "https://zyrrus.dev",
       },
-      description: [],
+      image: personalSiteImage,
+      description: [
+        "Used the stack above. Set up continuous deployment with GitHub Actions. Hosted on Firebase.",
+      ],
     },
     // Todo CLI
     // {
@@ -62,6 +66,12 @@ const ProjectsList: {
     // },
   ],
   active: [
+    /* Pennington
+     * Use neural network for image
+     * Machine Learning project | LSU Math & Pennington Biomed.
+     * stack: python pytorch pycaret numpy pandas matplotlib sklearn
+     *
+     */
     // Parallel
     {
       title: "Parallel | Personal Project",
