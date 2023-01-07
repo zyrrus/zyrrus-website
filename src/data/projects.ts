@@ -1,6 +1,7 @@
 import fillerImage from "assets/missing-file.svg";
 import dropnoteImage from "assets/dropnote.png";
 import personalSiteImage from "assets/personal-website.png";
+import flurryImage from "assets/flurry.png";
 
 type Project = {
   title: string;
@@ -100,7 +101,7 @@ const ProjectsList: {
       description: [
         "I'm currently working on a personal project called Flurry, a language learning app that aims to combine the best features of the most popular apps while remaining free with an optional, unobtrusive paid plan. I spent much of the first month researching and testing a handful of the most popular language learning apps and teaching methods to gather ideas and inspiration for Flurry. I'm excited to begin developing this project further and to bring a unique and valuable language learning experience to users.",
       ],
-      image: fillerImage,
+      image: flurryImage,
     },
   ],
 };
