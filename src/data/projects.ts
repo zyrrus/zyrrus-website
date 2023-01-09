@@ -2,6 +2,7 @@ import fillerImage from "assets/missing-file.svg";
 import dropnoteImage from "assets/dropnote.png";
 import personalSiteImage from "assets/personal-website.png";
 import flurryImage from "assets/flurry.png";
+import penningtonImage from "assets/pennington.png";
 
 type Project = {
   title: string;
@@ -37,6 +38,17 @@ const ProjectsList: {
       ],
       image: dropnoteImage,
     },
+    // Pennington
+    {
+      title: "ALM Prediction | LSU Math & Pennington Biomed.",
+      date: "Summer 2022 - Fall 2022",
+      stack: "Python, PyTorch, PyCaret, SKLearn, Numpy, Pandas",
+      links: {},
+      image: penningtonImage,
+      description: [
+        "I had the opportunity to work on a machine learning project with a group of students from LSU over the summer, with support from the Pennington Biomedical Research Center. Our goal was to predict appendicular lean muscle mass (ALM) based on body measurements collected using one of Pennington's machines. We were successful in developing a neural network model that was more accurate than a linear model developed in a previous research effort at the center. We are currently writing a paper on our findings and hope to publish it in the near future.",
+      ],
+    },
     // This Website
     {
       title: "This Personal Portfolio Website",
@@ -67,12 +79,6 @@ const ProjectsList: {
     // },
   ],
   active: [
-    /* Pennington
-     * Use neural network for image
-     * Machine Learning project | LSU Math & Pennington Biomed.
-     * stack: python pytorch pycaret numpy pandas matplotlib sklearn
-     *
-     */
     // Parallel
     {
       title: "Parallel | Personal Project",
@@ -92,7 +98,7 @@ const ProjectsList: {
     // Flurry
     {
       title: "Flurry | Personal Project",
-      stack: "TBD",
+      stack: "React, Typescript, Firebase (so far)",
       date: "Dec 2022 - Present",
       links: {
         figma:

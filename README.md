@@ -4,9 +4,6 @@
 
 <!-- TODO
 
-- Finish projects section
-- Add pictures to dropnote readme
--
 
  -->
 
