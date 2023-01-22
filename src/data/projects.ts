@@ -3,6 +3,7 @@ import dropnoteImage from "assets/dropnote.png";
 import personalSiteImage from "assets/personal-website.png";
 import flurryImage from "assets/flurry.png";
 import penningtonImage from "assets/pennington.png";
+import parallelImage from "assets/parallel.png";
 
 type Project = {
   title: string;
@@ -93,7 +94,7 @@ const ProjectsList: {
       description: [
         "Parallel is a platform that connects educators and animators to create new educational content for YouTube or other platforms. This was my first project using React, Firebase, and Figma, and I gained valuable experience in full-stack development as a result. The project was put in a temporarily complete state, but I plan on reviving it in the near future. I'm excited to continue working on Parallel and to see it fully realized after gaining hundreds of hours of experience since its original completion.",
       ],
-      image: fillerImage,
+      image: parallelImage,
     },
     // Flurry
     {
