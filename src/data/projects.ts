@@ -1,4 +1,4 @@
-import fillerImage from "assets/missing-file.svg";
+// import fillerImage from "assets/missing-file.svg";
 import dropnoteImage from "assets/dropnote.png";
 import personalSiteImage from "assets/personal-website.png";
 import flurryImage from "assets/flurry.png";
