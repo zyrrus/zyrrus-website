@@ -7,10 +7,15 @@ export default function Projects() {
     <>
       <ProjectList
         title="Completed Projects"
+        id="complete"
         projects={ProjectsList.complete}
       />
       <LargeDivider />
-      <ProjectList title="Active Projects" projects={ProjectsList.active} />
+      <ProjectList
+        title="Active Projects"
+        id="active"
+        projects={ProjectsList.active}
+      />
     </>
   );
 }

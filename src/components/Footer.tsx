@@ -2,6 +2,7 @@ import circleGradientLogo from "assets/figma.png";
 import { GithubIcon, EmailIcon, LinkedinIcon } from "components/Icons";
 import { Routes } from "data/constants";
 import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 export default function Footer() {
   return (
@@ -51,13 +52,13 @@ export default function Footer() {
                 {route.name}
               </NavLink>
               {route.subroutes?.map((subroute, j) => (
-                <NavLink
+                <HashLink
                   key={j}
                   className="text-sm font-light transition-colors hover:text-fg"
                   to={subroute.route}
                 >
                   {subroute.name}
-                </NavLink>
+                </HashLink>
               ))}
             </div>
           ))}

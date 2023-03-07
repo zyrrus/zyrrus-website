@@ -83,7 +83,7 @@ const ProjectsList: {
     // Parallel
     {
       title: "Parallel | Personal Project",
-      stack: "React, Firebase, SCSS, Figma",
+      stack: "NextJS, NextAuth, tRPC, Prisma, Tailwind",
       date: "August 2021; Jan 2023 - Present",
       links: {
         live: "https://parallel-70089.web.app/",
@@ -92,7 +92,7 @@ const ProjectsList: {
           "https://www.figma.com/file/IRzlxzz3J1E5khOpmk2KSN/Parallel?node-id=0%3A1&t=PuRMisg0rAGYa6GO-1",
       },
       description: [
-        "Parallel is a platform that connects educators and animators to create new educational content for YouTube or other platforms. This was my first project using React, Firebase, and Figma, and I gained valuable experience in full-stack development as a result. The project was put in a temporarily complete state, but I plan on reviving it in the near future. I'm excited to continue working on Parallel and to see it fully realized after gaining hundreds of hours of experience since its original completion.",
+        "Parallel is a platform that connects educators and animators to create new educational content for YouTube or other platforms. This was originally my first project using React, Firebase, and Figma, and I gained valuable experience in full-stack development from that endeavor. The project was put in a temporarily complete state, but I am currently revising the project. I am once again using this project as an opportunity to learn new technologies, so I have chosen NextJS, NextAuth, tRPC, Prisma, and TailwindCSS.",
       ],
       image: parallelImage,
     },
@@ -104,6 +104,7 @@ const ProjectsList: {
       links: {
         figma:
           "https://www.figma.com/file/jK6Sks2baD9CHhISlLowva/Flurry?node-id=1%3A2&t=Cy2r7kSEeoHuMAUq-1",
+        github: "https://github.com/learnflurry/waitlist/",
         live: "https://learnflurry.github.io/waitlist/",
       },
       description: [

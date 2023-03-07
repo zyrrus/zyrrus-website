@@ -15,6 +15,8 @@ const Routes: Route[] = [
     subroutes: [
       { name: "Skills", route: "/about#skills" },
       { name: "Education", route: "/about#education" },
+      { name: "Awards", route: "/about#awards" },
+      { name: "Hobbies", route: "/about#hobbies" },
     ],
   },
   {

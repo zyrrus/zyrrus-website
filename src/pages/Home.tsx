@@ -14,13 +14,13 @@ export default function Home() {
           <div className="mt-2 flex flex-row justify-between text-xl font-light text-mix sm:text-2xl md:mt-5 md:text-3xl lg:text-3xl">
             <h2>Zeke Abshire</h2>
             <div className="flex flex-row items-center gap-x-4">
-              <a href="https://github.com/zyrrus/">
+              <a href="https://github.com/zyrrus/" title="Github">
                 <GithubIcon />
               </a>
-              <a href="https://www.linkedin.com/in/zyrrus/">
+              <a href="https://www.linkedin.com/in/zyrrus/" title="LinkedIn">
                 <LinkedinIcon />
               </a>
-              <a href="mailto:zekeabshire@gmail.com">
+              <a href="mailto:zekeabshire@gmail.com" title="Email">
                 <EmailIcon />
               </a>
             </div>

@@ -17,7 +17,7 @@ export default function ProjectItem({
           <img
             src={image}
             alt="project preview"
-            className="w-full rounded-2xl md:rounded-[2rem]"
+            className="aspect-video w-full rounded-2xl md:rounded-[2rem]"
           />
           <Icons figma={links.figma} github={links.github} live={links.live} />
         </div>
