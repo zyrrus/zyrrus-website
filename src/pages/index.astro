@@ -1,0 +1,63 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("home", "home");
+const { Content } = await entry.render();
+---
+
+<Layout title="Home | Zeke Abshire" description="">
+    <div
+        class="flex min-h-screen flex-col items-center justify-between gap-y-12"
+    >
+        <div class="w-full">
+            <p
+                class="mt-36 text-2xl font-semibold leading-normal xs:text-3xl xs:leading-normal sm:text-5xl sm:leading-snug md:text-6xl md:leading-snug lg:text-7xl lg:leading-tight"
+                set:html={entry.data.title}
+            />
+            <div
+                class="mt-2 flex flex-row justify-between text-xl font-light text-mix sm:text-2xl md:mt-5 md:text-3xl lg:text-3xl"
+            >
+                <h1>{entry.data.subtitle}</h1>
+                <div class="flex flex-row items-center gap-x-4">
+                    <a href="https://github.com/zyrrus/" title="Github">
+                        <Icon
+                            name="fa:github"
+                            class="text-mix hover:text-fg transition-colors w-5 sm:w-6 md:w-8"
+                        />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/zyrrus/"
+                        title="LinkedIn"
+                    >
+                        <Icon
+                            name="fa:linkedin-square"
+                            class="text-mix hover:text-fg transition-colors w-5 sm:w-6 md:w-8"
+                        />
+                    </a>
+                    <a href="mailto:zekeabshire@gmail.com" title="Email">
+                        <Icon
+                            name="fa:envelope"
+                            class="text-mix hover:text-fg transition-colors w-5 sm:w-6 md:w-8"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <a href="#intro" class="mb-48">
+            <Icon
+                name="radix-icons:double-arrow-down"
+                class="floating w-16 md:w-20 lg:w-24 text-mix transition-colors hover:text-fg"
+            />
+        </a>
+    </div>
+
+    <div
+        id="intro"
+        class="flex flex-col gap-y-10 py-8 text-lg leading-loose text-mix"
+    >
+        <Content />
+    </div>
+</Layout>

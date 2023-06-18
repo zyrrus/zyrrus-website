@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Project from "./Project.astro";
+import SmallDivider from "./SmallDivider.astro";
+
+export interface Props {
+    title: string;
+    id: string;
+    collection:
+        | CollectionEntry<"active">[]
+        | CollectionEntry<"completed">[]
+        | CollectionEntry<"jobs">[];
+}
+
+const { title, id, collection } = Astro.props;
+
+const projects = await Promise.all(
+    collection.map(async (y) => {
+        const { Content } = await y.render();
+        return {
+            data: y.data,
+            Content,
+        };
+    })
+);
+---
+
+<h1 id={id} class="my-6 mt-14 text-4xl font-semibold">
+    {title}
+</h1>
+{
+    projects.map(({ Content, data }, index) => (
+        <Fragment>
+            <Project
+                title={data.title}
+                date={data.date}
+                stack={data.stack}
+                image={data.image}
+                links={{
+                    github: data.github,
+                    figma: data.figma,
+                    live: data.live,
+                }}
+            >
+                <Content />
+            </Project>
+            {index < projects.length - 1 ? <SmallDivider /> : undefined}
+        </Fragment>
+    ))
+}

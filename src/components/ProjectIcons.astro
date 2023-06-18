@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Props {
+    figma?: string;
+    github?: string;
+    live?: string;
+    hideBackground?: boolean;
+}
+
+const { figma, github, live, hideBackground = false } = Astro.props;
+
+const underImageClasses =
+    "icon-backdrop absolute bottom-[-10%] mt-6 flex flex-row gap-x-1 text-4xl xs:bottom-[-7%] md:bottom-[-4.5%] md:text-3xl";
+const underTitleClasses =
+    "mt-6 flex flex-row gap-x-5 text-4xl md:text-3xl justify-center";
+const classes = hideBackground ? underTitleClasses : underImageClasses;
+---
+
+<div class={classes}>
+    {
+        github !== undefined && (
+            <a href={github}>
+                <Icon
+                    name="fa:github"
+                    class="text-mix hover:text-fg transition-colors w-5 sm:w-6 md:w-8"
+                />
+            </a>
+        )
+    }
+    {
+        figma !== undefined && (
+            <a href={figma}>
+                <Icon
+                    name="gg:figma"
+                    class="text-mix hover:text-fg transition-colors w-5 sm:w-6 md:w-8"
+                />
+            </a>
+        )
+    }
+    {
+        live !== undefined && (
+            <a href={live}>
+                <Icon
+                    name="bi:cloud-fill"
+                    class="text-mix hover:text-fg transition-colors w-5 sm:w-6 md:w-8"
+                />
+            </a>
+        )
+    }
+</div>

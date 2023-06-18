@@ -1,0 +1,37 @@
+---
+interface Route {
+    name: string;
+    url: string;
+}
+
+const routes: Route[] = [
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+    { name: "Projects", url: "/projects" },
+    { name: "Work", url: "/work" },
+];
+
+const activePathname = Astro.url.pathname;
+---
+
+<nav class="w-full">
+    <ul
+        class="mx-auto flex w-11/12 flex-row justify-between py-4 sm:w-3/4 md:w-3/5 lg:w-1/2"
+    >
+        {
+            routes.map(({ name, url }) => (
+                <li
+                    class={
+                        "text-base uppercase transition-colors hover:text-fg " +
+                        (activePathname === url
+                            ? "selected-highlight font-semibold text-fg"
+                            : "font-normal text-mix")
+                    }
+                >
+                    <a href={url}>{name}</a>
+                </li>
+            ))
+        }
+    </ul>
+    <div class="h-[2px] w-full rounded-full bg-fg"></div>
+</nav>

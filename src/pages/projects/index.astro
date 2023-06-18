@@ -1,0 +1,23 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ProjectList from "@components/ProjectList.astro";
+import LargeDivider from "@components/LargeDivider.astro";
+import { getCollection, getEntries } from "astro:content";
+
+const activeCollection = await getCollection("active");
+const completedCollection = await getCollection("completed");
+---
+
+<Layout title="Projects | Zeke Abshire" description="">
+    <ProjectList
+        title="Active Projects"
+        id="active"
+        collection={activeCollection}
+    />
+    <LargeDivider />
+    <ProjectList
+        title="Completed Projects"
+        id="complete"
+        collection={completedCollection}
+    />
+</Layout>

@@ -1,0 +1,51 @@
+---
+import ProjectIcons from "./ProjectIcons.astro";
+import type { ProjectDetails } from "@constants/types";
+
+export interface Props extends ProjectDetails {}
+
+const { title, stack, date, links, image } = Astro.props;
+---
+
+<section class="my-10">
+    {/* Images, Icons */}
+    {
+        image !== undefined && (
+            <div class="relative flex flex-col items-center">
+                <img
+                    src={image}
+                    alt="project preview"
+                    class="aspect-video w-full rounded-2xl md:rounded-[2rem]"
+                />
+                <ProjectIcons
+                    figma={links.figma}
+                    github={links.github}
+                    live={links.live}
+                />
+            </div>
+        )
+    }
+
+    {/* Title, Stack, Date */}
+    <h2 class="relative my-3 mt-8 text-2xl font-semibold">{title}</h2>
+    <div
+        class="relative mb-8 flex w-full flex-row justify-between font-semibold text-mix"
+    >
+        <span>{stack}</span>
+        <span>{date}</span>
+    </div>
+    {
+        image === undefined && (
+            <ProjectIcons
+                figma={links.figma}
+                github={links.github}
+                live={links.live}
+                hideBackground
+            />
+        )
+    }
+    {/* Paragraphs */}
+    <div class="my-3 text-lg leading-loose text-mix">
+        <slot />
+    </div>
+</section>
