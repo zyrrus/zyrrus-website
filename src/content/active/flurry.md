@@ -2,7 +2,7 @@
 title: Flurry | Personal Project
 date: Dec 2022 - Present
 stack: React, Typescript, Firebase (temporarily)
-image: ../../public/assets/projects/flurry.png
+image: /assets/projects/flurry.png
 figma: https://www.figma.com/file/jK6Sks2baD9CHhISlLowva/Flurry?node-id=1%3A2&t=Cy2r7kSEeoHuMAUq-1
 github: https://github.com/learnflurry/waitlist/
 live: https://learnflurry.github.io/waitlist/

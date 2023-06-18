@@ -2,7 +2,7 @@
 title: Parallel | Personal Project
 date: August 2021; Jan 2023 - Present
 stack: Typescript, Next, Prisma, tRPC, Tailwind
-image: ../../public/assets/projects/parallel.png
+image: /assets/projects/parallel.png
 live: https://parallel.zyrrus.dev
 github: https://github.com/zyrrus/parallel
 figma: https://www.figma.com/file/IRzlxzz3J1E5khOpmk2KSN/Parallel?node-id=0%3A1&t=PuRMisg0rAGYa6GO-1

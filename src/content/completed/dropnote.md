@@ -2,7 +2,7 @@
 title: DropNote | Senior Project
 date: Fall 2022
 stack: Flutter, Firebase
-image: ../../public/assets/projects/dropnote.png
+image: /assets/projects/dropnote.png
 github: https://github.com/zyrrus/dropnote
 figma: https://www.figma.com/file/59sRcvm4AzJ2IjPota8OY6/DropNote-V1?node-id=104%3A2987&t=ATFk9o0En91H4FSO-1
 ---
