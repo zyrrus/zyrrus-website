@@ -8,4 +8,4 @@ github: https://github.com/zyrrus/zyrrus-website
 live: https://zyrrus.dev
 ---
 
-I started with React back in December, but I rewrote it in Astro.js in June. I set up continuous deployment with GitHub Actions and hosted it on Firebase.
+This was originally built with React in December. I wanted to try out Astro.js, so I converted the project over to Astro in June. I set up continuous deployment with GitHub Actions and hosted it with Vercel.

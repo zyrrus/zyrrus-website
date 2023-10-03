@@ -56,7 +56,7 @@ const routes: Route[] = [
 <div class="flex flex-col gap-y-12 py-16 md:gap-y-6">
     <div class="h-[2px] w-full rounded-full bg-fg"></div>
     <div
-        class="items-left mx-4 flex flex-col items-start gap-8 xs:mx-10 xs:items-center md:flex-row md:items-start md:justify-between"
+        class="mx-4 flex flex-col pt-8 items-start gap-8 xs:mx-10 xs:items-center md:flex-row md:items-start md:justify-between"
     >
         {/* Left Side */}
         <div class="flex flex-col gap-y-3">
@@ -75,7 +75,7 @@ const routes: Route[] = [
                 links.map(({ label, icon, href }) => (
                     <a
                         href={href}
-                        class="flex w-full flex-row items-center gap-x-3 text-mix transition-colors hover:text-fg"
+                        class="flex w-full pl-4 flex-row items-center gap-x-3 text-mix transition-colors hover:text-fg"
                     >
                         <Icon name={icon} class="w-6" />
                         {label}
