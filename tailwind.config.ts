@@ -77,9 +77,10 @@ module.exports = {
             left: "-17.5rem",
             top: "0",
             transform: "translateY(-50%)",
-            zIndex: "-100",
-            color: theme("colors.neutral.150"),
-            "@apply dark:text-neutral-700": {},
+            zIndex: "-30",
+            overflow: "clip",
+            "@apply text-neutral-150/95": {},
+            "@apply dark:text-neutral-700/90": {},
           },
         }),
       });

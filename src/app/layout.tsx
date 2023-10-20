@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { ThemeProvider } from "~/app/_components/theme-provider";
-import { ThemeToggle } from "~/app/_components/theme-toggle";
+import { Sidebar } from "~/app/_components/sidebar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable} text-primary bg-0`}>
+      <body
+        className={`font-sans ${inter.variable} relative text-primary bg-0 `}
+      >
         <TRPCReactProvider headers={headers()}>
           <ThemeProvider
             attribute="class"
@@ -33,9 +35,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="sticky top-0 p-4">
-              <ThemeToggle />
-            </div>
+            <Sidebar />
             {children}
           </ThemeProvider>
         </TRPCReactProvider>
