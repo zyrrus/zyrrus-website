@@ -6,7 +6,6 @@ import {
   type HighlightCardProps,
 } from "~/app/_components/highlight-card";
 import { ScrollArea } from "~/app/_components/ui/scroll-area";
-import { cn } from "~/app/_utils/styles";
 
 export interface HighlightCardRowProps {
   title: string;
@@ -20,22 +19,32 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
   const containerRef = useRef<HTMLHeadingElement | null>(null);
   const [distanceToLeftEdge, setDistanceToLeftEdge] = useState(0);
 
-  const updateDistance = () => {
-    if (containerRef.current) {
-      const boundingRect = containerRef.current.getBoundingClientRect();
-      const distance = boundingRect.left;
-      setDistanceToLeftEdge(distance);
-    }
-  };
-
   useEffect(() => {
+    const updateDistance = () => {
+      if (containerRef.current) {
+        const boundingRect = containerRef.current.getBoundingClientRect();
+        const distance = boundingRect.left;
+        setDistanceToLeftEdge(distance);
+        // setTimeout(() => {
+        //   setDistanceToLeftEdge(distance);
+        // }, 10);
+      }
+    };
+
     updateDistance();
 
     window.addEventListener("resize", updateDistance);
     return () => {
       window.removeEventListener("resize", updateDistance);
     };
-  }, []);
+  }, [containerRef.current]);
+
+  const spacer = (
+    <div
+      className="flex-shrink-0 transition-[width]"
+      style={{ width: Math.max(distanceToLeftEdge - 32, 0) }}
+    />
+  );
 
   return (
     <>
@@ -46,13 +55,13 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
       >
         {title}
       </h2>
-      <ScrollArea className="pb-3">
+      <ScrollArea className="pb-6">
         <div className="flex w-full flex-row gap-x-8">
-          <div style={{ width: distanceToLeftEdge - 32, flexShrink: 0 }} />
+          {spacer}
           {items.map((card, index) => (
             <HighlightCard key={index} {...card} />
           ))}
-          <div style={{ width: distanceToLeftEdge - 32, flexShrink: 0 }} />
+          {spacer}
         </div>
       </ScrollArea>
     </>

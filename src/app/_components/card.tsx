@@ -17,8 +17,8 @@ export interface CardProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof cardVariants> {}
 
-function Card({ className, depth, ...props }: CardProps) {
+const Card: React.FC<CardProps> = ({ className, depth, ...props }) => {
   return <div className={cn(cardVariants({ depth }), className)} {...props} />;
-}
+};
 
 export { Card, cardVariants };

@@ -1,14 +1,19 @@
 import { Button } from "~/app/_components/ui/button";
-import { GoProject } from "react-icons/go";
+import { GoProject, GoPaperAirplane, GoCopy } from "react-icons/go";
 import { HighlightCardRow } from "~/app/_components/highlight-card-row";
+import { RingBackground } from "~/app/_components/ring-background";
+import { HeroGraphic } from "~/app/_components/hero-graphic";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-y-52 pt-72">
+    <main className="flex flex-col gap-y-52 pb-36 pt-72">
+      {/* <RingBackground /> */}
+      <HeroGraphic />
       <Hero />
       <About />
       <Featured />
       <Articles />
+      <Footer />
     </main>
   );
 }
@@ -26,10 +31,14 @@ function Hero() {
       </div>
       <div className="flex flex-row items-center gap-x-7"></div>
       <div className="flex flex-row items-center gap-x-4">
-        <Button className="">Contact me</Button>
+        <Button size="lg">
+          Contact me
+          <GoPaperAirplane strokeWidth="1.25" />
+        </Button>
         <span className="text-secondary">or</span>
-        <Button variant="outline" className="">
+        <Button variant="outline" size="lg">
           Copy email
+          <GoCopy strokeWidth="0.5" />
         </Button>
       </div>
     </section>
@@ -90,5 +99,31 @@ function Articles() {
         }))}
       />
     </section>
+  );
+}
+
+function Footer() {
+  return (
+    <p className="container text-center">
+      <Button variant="link" asChild>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/zyrrus"
+        >
+          github.com/zyrrus
+        </a>
+      </Button>
+      {" · "}
+      <Button variant="link" asChild>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://linkedin.com/in/zyrrus"
+        >
+          linkedin.com/in/zyrrus
+        </a>
+      </Button>
+    </p>
   );
 }
