@@ -4,8 +4,8 @@ import { useRef, useState, useEffect } from "react";
 import {
   HighlightCard,
   type HighlightCardProps,
-} from "~/app/_components/highlight-card";
-import { ScrollArea } from "~/app/_components/ui/scroll-area";
+} from "~/app/components/highlight-card";
+import { ScrollArea } from "~/app/components/ui/scroll-area";
 
 export interface HighlightCardRowProps {
   title: string;
@@ -41,7 +41,7 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
 
   const spacer = (
     <div
-      className="flex-shrink-0 transition-[width]"
+      className="flex-shrink-0"
       style={{ width: Math.max(distanceToLeftEdge - 32, 0) }}
     />
   );

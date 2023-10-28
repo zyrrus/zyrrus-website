@@ -9,13 +9,13 @@ import {
   GoPencil,
   GoMail,
 } from "react-icons/go";
-import { SidebarCommand } from "~/app/_components/sidebar-command";
-import { ThemeToggle } from "~/app/_components/theme-toggle";
-import { Button } from "~/app/_components/ui/button";
+import { SidebarCommand } from "~/app/components/sidebar/sidebar-command";
+import { ThemeToggle } from "~/app/components/theme/theme-toggle";
+import { Button } from "~/app/components/ui/button";
 
 const Sidebar = () => {
   return (
-    <nav className="fixed bottom-0 left-0 top-0 z-30 border-r border-r-neutral-200 bg-neutral-50/75 px-4 backdrop-blur-lg dark:border-r-neutral-700 dark:bg-neutral-800/75">
+    <nav className="fixed bottom-0 left-0 top-0 z-30 hidden border-r border-r-neutral-200 bg-neutral-50/75 px-4 backdrop-blur-lg dark:border-r-neutral-700 dark:bg-neutral-800/75">
       <ul className="flex h-full flex-col items-center justify-center gap-y-3 ">
         <li>
           <Button variant="ghost" size="icon" asChild>

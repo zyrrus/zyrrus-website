@@ -4,7 +4,7 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 
-import { cn } from "~/app/_utils/styles";
+import { cn } from "~/app/utils/styles";
 
 const Dialog = DialogPrimitive.Root;
 

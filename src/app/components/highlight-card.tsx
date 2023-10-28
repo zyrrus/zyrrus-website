@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode } from "react";
-import { Card } from "~/app/_components/card";
+import { Card } from "~/app/components/card";
 
 export interface HighlightCardProps {
   title: string;
@@ -23,7 +23,10 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
       href={route}
       className="w-full max-w-[540px] flex-shrink-0 flex-grow text-primary"
     >
-      <Card depth={0}>
+      <Card
+        depth={0}
+        className="mt-3 transition-transform hover:-translate-y-3"
+      >
         <Card depth={1} className="relative h-60 w-full overflow-hidden">
           <Image
             src={image}

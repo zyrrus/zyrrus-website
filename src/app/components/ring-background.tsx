@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { clamp01 } from "~/app/_utils/math";
-import { random, randomInt0 } from "~/app/_utils/random";
+import { clamp01 } from "~/app/utils/math";
+import { random, randomInt0 } from "~/app/utils/random";
 
 const RingBackground = () => {
   const numRings = 10; // Adjust the number of rings as needed

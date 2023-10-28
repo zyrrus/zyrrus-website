@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
-import { cn } from "~/app/_utils/styles";
+import { cn } from "~/app/utils/styles";
 
 // TODO: Un-customize this component + make it customizable through props
 // - 'container' in ScrollAreaScrollbar

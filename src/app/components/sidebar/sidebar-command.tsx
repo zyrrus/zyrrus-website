@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { GoSearch } from "react-icons/go";
-import { Button } from "~/app/_components/ui/button";
+import { Button } from "~/app/components/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -11,7 +11,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "~/app/_components/ui/command";
+} from "~/app/components/ui/command";
 
 const SidebarCommand = () => {
   const [open, setOpen] = useState(false);
