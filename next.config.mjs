@@ -4,8 +4,13 @@
  */
 await import("./src/env.mjs");
 
+import createMDX from "@next/mdx";
+import rehypePrism from "@mapbox/rehype-prism";
+import remarkGfm from "remark-gfm";
+
 /** @type {import("next").NextConfig} */
 const config = {
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [
       {
@@ -18,4 +23,11 @@ const config = {
   },
 };
 
-export default config;
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypePrism],
+  },
+});
+
+export default withMDX(config);

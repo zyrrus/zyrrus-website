@@ -21,6 +21,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        sm: "540px",
+      },
       colors: {
         neutral: {
           50: "#fefefe", // (Dark theme) primary text | (Light theme) bg
@@ -36,9 +39,6 @@ module.exports = {
           850: "#1e1e1e", // (Dark theme) display text, card depth 0
           900: "#171717", // (Light theme) primary text, card depth 1
         },
-      },
-      fontSize: {
-        display: "12.5rem",
       },
       keyframes: {
         "accordion-down": {
@@ -63,6 +63,7 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
     plugin(function ({ matchComponents, addUtilities, theme }) {
       matchComponents({
         "display-text": (value) => ({
@@ -71,14 +72,13 @@ module.exports = {
             content: value,
             position: "absolute",
             fontWeight: "800",
-            fontSize: theme("fontSize.display"),
+            fontSize: "min(12.5rem, calc(1.5rem + 10vw))",
             lineHeight: "1",
             letterSpacing: "0.09em",
-            left: "-17.5rem",
+            left: "clamp(-17.5rem, calc(-43vw + 16.25rem), 0px)",
             top: "0",
             transform: "translateY(-50%)",
             zIndex: "-30",
-            overflow: "clip",
             "@apply text-neutral-150/95": {},
             "@apply dark:text-neutral-700/90": {},
           },

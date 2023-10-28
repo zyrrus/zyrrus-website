@@ -1,14 +1,14 @@
-import { Button } from "~/app/_components/ui/button";
+import { Button } from "~/app/components/ui/button";
 import { GoProject, GoPaperAirplane, GoCopy } from "react-icons/go";
-import { HighlightCardRow } from "~/app/_components/highlight-card-row";
-import { RingBackground } from "~/app/_components/ring-background";
-import { HeroGraphic } from "~/app/_components/hero-graphic";
+import { HighlightCardRow } from "~/app/components/highlight-card-row";
+import { RingBackground } from "~/app/components/ring-background";
+import { HeroGraphic } from "~/app/components/hero-graphic";
 
 export default function Home() {
   return (
     <main className="flex flex-col gap-y-52 pb-36 pt-72">
       {/* <RingBackground /> */}
-      <HeroGraphic />
+      {/* <HeroGraphic /> */}
       <Hero />
       <About />
       <Featured />
@@ -30,12 +30,12 @@ function Hero() {
         <p className="text-secondary">Available for new opportunities</p>
       </div>
       <div className="flex flex-row items-center gap-x-7"></div>
-      <div className="flex flex-row items-center gap-x-4">
+      <div className="flex flex-col items-stretch gap-x-4 gap-y-2 sm:flex-row sm:items-center">
         <Button size="lg">
           Contact me
           <GoPaperAirplane strokeWidth="1.25" />
         </Button>
-        <span className="text-secondary">or</span>
+        <span className="text-center text-secondary">or</span>
         <Button variant="outline" size="lg">
           Copy email
           <GoCopy strokeWidth="0.5" />
@@ -70,7 +70,7 @@ function About() {
 
 function Featured() {
   return (
-    <section className="flex flex-col gap-y-16">
+    <section className="flex flex-col gap-y-12">
       <HighlightCardRow
         title="Featured"
         items={Array.from({ length: 10 }, (_, index) => ({
@@ -87,7 +87,7 @@ function Featured() {
 
 function Articles() {
   return (
-    <section className="flex flex-col gap-y-16">
+    <section className="flex flex-col gap-y-12 transition-transform">
       <HighlightCardRow
         title="Articles"
         items={Array.from({ length: 5 }, (_, index) => ({

@@ -4,8 +4,9 @@ import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
-import { ThemeProvider } from "~/app/_components/theme-provider";
-import { Sidebar } from "~/app/_components/sidebar";
+import { ThemeProvider } from "~/app/components/theme/theme-provider";
+import { Sidebar } from "~/app/components/sidebar/sidebar";
+import { type PropsWithChildren } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,11 +19,7 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body
