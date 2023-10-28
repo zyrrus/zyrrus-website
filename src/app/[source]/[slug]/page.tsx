@@ -31,7 +31,7 @@ export default async function Source({ params }: Props) {
   const { content } = await getPostBySlug(params.slug, params.source);
 
   return (
-    <main className="prose dark:prose-invert prose-neutral container">
+    <main className="prose dark:prose-invert prose-neutral container mb-24 mt-10">
       {content}
     </main>
   );

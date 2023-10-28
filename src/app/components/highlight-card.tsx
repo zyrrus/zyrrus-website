@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { type ReactNode } from "react";
+import { useState, type ReactNode, useEffect } from "react";
 import { Card } from "~/app/components/card";
+import { clamp } from "~/app/utils/math";
 
 export interface HighlightCardProps {
   title: string;
@@ -18,11 +21,26 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   image,
   icon,
 }) => {
+  const padding = 24 * 2;
+  const maxWidth = 588 - padding;
+
+  const [width, setWidth] = useState(540);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      setWidth(clamp(0, document.body.clientWidth - padding, maxWidth));
+    };
+
+    updateWidth();
+
+    window.addEventListener("resize", updateWidth);
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, []);
+
   return (
-    <Link
-      href={route}
-      className="w-full max-w-[540px] flex-shrink-0 flex-grow text-primary"
-    >
+    <Link href={route} className="text-primary" style={{ width: width }}>
       <Card
         depth={0}
         className="mt-3 transition-transform hover:-translate-y-3"

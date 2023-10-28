@@ -17,17 +17,15 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
   items,
 }) => {
   const containerRef = useRef<HTMLHeadingElement | null>(null);
-  const [distanceToLeftEdge, setDistanceToLeftEdge] = useState(0);
+  const [gutterWidth, setGutterWidth] = useState(0);
+  const columnGap = 32;
 
   useEffect(() => {
     const updateDistance = () => {
       if (containerRef.current) {
         const boundingRect = containerRef.current.getBoundingClientRect();
         const distance = boundingRect.left;
-        setDistanceToLeftEdge(distance);
-        // setTimeout(() => {
-        //   setDistanceToLeftEdge(distance);
-        // }, 10);
+        setGutterWidth(distance);
       }
     };
 
@@ -42,7 +40,10 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
   const spacer = (
     <div
       className="flex-shrink-0"
-      style={{ width: Math.max(distanceToLeftEdge - 32, 0) }}
+      style={{
+        width: Math.max(gutterWidth, 0),
+        marginRight: -columnGap,
+      }}
     />
   );
 
@@ -56,7 +57,7 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
         {title}
       </h2>
       <ScrollArea className="pb-6">
-        <div className="flex w-full flex-row gap-x-8">
+        <div className="flex w-full flex-row gap-x-8 px-6">
           {spacer}
           {items.map((card, index) => (
             <HighlightCard key={index} {...card} />

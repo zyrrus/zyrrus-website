@@ -16,13 +16,14 @@ module.exports = {
     },
     container: {
       center: true,
+      padding: "1.5rem",
       screens: {
-        sm: "540px",
+        sm: "588px",
       },
     },
     extend: {
       screens: {
-        sm: "540px",
+        sm: "588px",
       },
       colors: {
         neutral: {
@@ -75,7 +76,7 @@ module.exports = {
             fontSize: "min(12.5rem, calc(1.5rem + 10vw))",
             lineHeight: "1",
             letterSpacing: "0.09em",
-            left: "clamp(-17.5rem, calc(-43vw + 16.25rem), 0px)",
+            left: "clamp(-17.5rem, calc(-43vw + 20rem), 0px)",
             top: "0",
             transform: "translateY(-50%)",
             zIndex: "-30",
