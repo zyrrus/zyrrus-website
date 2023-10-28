@@ -13,7 +13,6 @@ export default function Home() {
       <About />
       <Featured />
       <Articles />
-      <Footer />
     </main>
   );
 }
@@ -99,31 +98,5 @@ function Articles() {
         }))}
       />
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <p className="container text-center">
-      <Button variant="link" asChild>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/zyrrus"
-        >
-          github.com/zyrrus
-        </a>
-      </Button>
-      {" · "}
-      <Button variant="link" asChild>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://linkedin.com/in/zyrrus"
-        >
-          linkedin.com/in/zyrrus
-        </a>
-      </Button>
-    </p>
   );
 }
