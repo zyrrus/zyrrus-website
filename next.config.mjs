@@ -5,8 +5,10 @@
 await import("./src/env.mjs");
 
 import createMDX from "@next/mdx";
-import rehypePrism from "@mapbox/rehype-prism";
+import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+// import rehypePrism from "@mapbox/rehype-prism";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -25,8 +27,8 @@ const config = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrism],
+    remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+    // rehypePlugins: [rehypePrism],
   },
 });
 
