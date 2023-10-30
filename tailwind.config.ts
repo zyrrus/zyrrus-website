@@ -36,6 +36,7 @@ module.exports = {
           500: "#737373",
           600: "#525252", // (Light theme) secondary text, icons
           700: "#404040", // (Dark theme) borders
+          750: "#333333", // (Dark theme) card highlight
           800: "#262626", // (Light theme) primary button fill | (Dark theme) bg
           850: "#1e1e1e", // (Dark theme) display text, card depth 0
           900: "#171717", // (Light theme) primary text, card depth 1
