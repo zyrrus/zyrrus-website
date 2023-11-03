@@ -10,9 +10,18 @@ import {
   GoPencil,
   GoMail,
 } from "react-icons/go";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "~/app/components/ui/tooltip";
+
+import { type IconType } from "react-icons/lib";
 import { SidebarCommand } from "~/app/components/navigation/sidebar-command";
 import { ThemeToggle } from "~/app/components/theme/theme-toggle";
 import { Button } from "~/app/components/ui/button";
+import { type PropsWithChildren } from "react";
 
 const navigation = cva([
   // Shared
@@ -42,52 +51,95 @@ const separator = cva([
   "xl:my-2 xl:mx-0 sm:block",
 ]);
 
+// TODO: Finish setting up "current page" state
+const icon = cva("h-6 w-6", {
+  variants: {
+    status: { inactive: "text-neutral-400", active: "text-primary" },
+  },
+});
+
+const links: {
+  tooltip: string;
+  href: string;
+  icon: IconType;
+}[] = [
+  {
+    tooltip: "Home",
+    href: "/",
+    icon: GoHome,
+  },
+  {
+    tooltip: "About",
+    href: "/about",
+    icon: GoPerson,
+  },
+  {
+    tooltip: "Projects",
+    href: "/projects",
+    icon: GoCommandPalette,
+  },
+  {
+    tooltip: "Articles",
+    href: "/articles",
+    icon: GoPencil,
+  },
+];
+
 const Navigation = () => {
   return (
     <nav className={navigation()}>
       <ul className={navigationList()}>
+        {links.map(({ tooltip, href, icon: Icon }) => (
+          <li key={href}>
+            <WithTooltip tooltip={tooltip}>
+              <Button variant="ghost" size="icon" asChild>
+                <Link href={href}>
+                  <Icon className={icon({ status: "active" })} />
+                </Link>
+              </Button>
+            </WithTooltip>
+          </li>
+        ))}
         <li>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/">
-              <GoHome className="h-6 w-6" />
-            </Link>
-          </Button>
-        </li>
-        <li>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/about">
-              <GoPerson className="h-6 w-6" />
-            </Link>
-          </Button>
-        </li>
-        <li>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/projects">
-              <GoCommandPalette className="h-6 w-6" />
-            </Link>
-          </Button>
-        </li>
-        <li>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/articles">
-              <GoPencil className="h-6 w-6" />
-            </Link>
-          </Button>
-        </li>
-        <li>
-          <Button variant="ghost" size="icon">
-            <GoMail className="h-6 w-6" />
-          </Button>
+          <WithTooltip tooltip="Contact">
+            <Button variant="ghost" size="icon">
+              <GoMail className={icon({ status: "active" })} />
+            </Button>
+          </WithTooltip>
         </li>
         <Separator.Root decorative className={separator()} />
         <li className="hidden sm:block">
-          <ThemeToggle />
+          <WithTooltip tooltip="Toggle theme">
+            <div>
+              <ThemeToggle />
+            </div>
+          </WithTooltip>
         </li>
         <li className="hidden sm:block">
-          <SidebarCommand />
+          <WithTooltip tooltip="Search">
+            <div>
+              <SidebarCommand />
+            </div>
+          </WithTooltip>
         </li>
       </ul>
     </nav>
+  );
+};
+
+const WithTooltip = ({
+  children,
+  tooltip,
+}: PropsWithChildren<{ tooltip: string }>) => {
+  return (
+    <TooltipProvider delayDuration={200}>
+      <Tooltip>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipContent side="right">
+          <p className="">{tooltip}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
