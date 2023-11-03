@@ -1,11 +1,11 @@
 import { Button } from "~/app/components/ui/button";
 import { GoPaperAirplane, GoCopy } from "react-icons/go";
-import Featured from "~/app/(home)/featured";
-import Articles from "~/app/(home)/articles";
+import Featured from "~/app/(home)/featured-section";
+import Articles from "~/app/(home)/articles-section";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-y-52 pb-36 pt-72">
+    <main className="flex flex-col gap-y-52 pb-24 pt-72">
       {/* <RingBackground /> */}
       {/* <HeroGraphic /> */}
       <Hero />
