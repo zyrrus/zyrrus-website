@@ -46,12 +46,8 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
         className="mt-3 transition-transform hover:-translate-y-3"
       >
         <Card depth={1} className="relative h-60 w-full overflow-hidden">
-          <Image
-            src={image}
-            alt={title}
-            className="shadow-cutout-depth-1"
-            fill
-          />
+          <Image src={image} alt={title} className="object-cover" fill />
+          <div className="absolute inset-0 shadow-cutout-depth-1" />
         </Card>
         <div className="flex flex-row justify-between px-6 py-3">
           <div className="flex flex-row items-center gap-x-2">
