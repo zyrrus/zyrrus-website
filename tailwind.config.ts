@@ -35,10 +35,10 @@ module.exports = {
           400: "#a3a3a3", // (Dark theme) secondary text, icons
           500: "#737373",
           600: "#525252", // (Light theme) secondary text, icons
-          700: "#404040", // (Dark theme) borders
+          700: "#404040", // (Dark theme) borders, display text (25%)
           750: "#333333", // (Dark theme) card highlight
           800: "#262626", // (Light theme) primary button fill | (Dark theme) bg
-          850: "#1e1e1e", // (Dark theme) display text, card depth 0
+          850: "#212121", // (Dark theme) card depth 0
           900: "#171717", // (Light theme) primary text, card depth 1
         },
       },
@@ -81,8 +81,8 @@ module.exports = {
             top: "0",
             transform: "translateY(-50%)",
             zIndex: "-30",
-            "@apply text-neutral-150/95": {},
-            "@apply dark:text-neutral-700/90": {},
+            "@apply text-neutral-150": {},
+            "@apply dark:text-neutral-700/25": {},
           },
         }),
       });

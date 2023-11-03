@@ -3,20 +3,13 @@
 import * as Separator from "@radix-ui/react-separator";
 import { cva } from "class-variance-authority";
 import Link from "next/link";
-import {
-  GoHome,
-  GoPerson,
-  GoCommandPalette,
-  GoPencil,
-  GoMail,
-} from "react-icons/go";
+import { GoHome, GoPerson, GoCommandPalette, GoPencil } from "react-icons/go";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "~/app/components/ui/tooltip";
-
 import { type IconType } from "react-icons/lib";
 import { SidebarCommand } from "~/app/components/navigation/sidebar-command";
 import { ThemeToggle } from "~/app/components/theme/theme-toggle";
@@ -100,13 +93,6 @@ const Navigation = () => {
             </WithTooltip>
           </li>
         ))}
-        <li>
-          <WithTooltip tooltip="Contact">
-            <Button variant="ghost" size="icon">
-              <GoMail className={icon({ status: "active" })} />
-            </Button>
-          </WithTooltip>
-        </li>
         <Separator.Root decorative className={separator()} />
         <li className="hidden sm:block">
           <WithTooltip tooltip="Toggle theme">
