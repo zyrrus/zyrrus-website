@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import { getFirstPostBySource } from "~/server/utils/mdx/mdx";
+import { getFirstPostMetaBySource } from "~/server/utils/mdx/mdx";
 
 export default async function Articles() {
-  const firstArticle = await getFirstPostBySource("articles");
+  const firstArticle = await getFirstPostMetaBySource("articles");
   redirect(`/articles/${firstArticle?.slug}`);
 }
