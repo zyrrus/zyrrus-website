@@ -8,7 +8,7 @@ import { clamp } from "~/app/utils/math";
 
 export interface HighlightCardProps {
   title: string;
-  subtitle: string;
+  tags?: string[];
   route: string;
   image: string;
   icon: ReactNode;
@@ -16,7 +16,7 @@ export interface HighlightCardProps {
 
 const HighlightCard: React.FC<HighlightCardProps> = ({
   title,
-  subtitle,
+  tags,
   route,
   image,
   icon,
@@ -58,7 +58,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
             {icon}
             <p className="font-medium">{title}</p>
           </div>
-          <p className="text-secondary">{subtitle}</p>
+          <p className="text-secondary">{tags?.join(" · ")}</p>
         </div>
       </Card>
     </Link>

@@ -1,8 +1,7 @@
 import { Button } from "~/app/components/ui/button";
-import { GoProject, GoPaperAirplane, GoCopy } from "react-icons/go";
-import { HighlightCardRow } from "~/app/components/highlight-card-row";
-import { RingBackground } from "~/app/components/ring-background";
-import { HeroGraphic } from "~/app/components/hero-graphic";
+import { GoPaperAirplane, GoCopy } from "react-icons/go";
+import Featured from "~/app/(home)/featured";
+import Articles from "~/app/(home)/articles";
 
 export default function Home() {
   return (
@@ -63,40 +62,6 @@ function About() {
           has earned me a reputation for delivering exceptional results.
         </p>
       </div>
-    </section>
-  );
-}
-
-function Featured() {
-  return (
-    <section className="flex flex-col gap-y-12">
-      <HighlightCardRow
-        title="Featured"
-        items={Array.from({ length: 10 }, (_, index) => ({
-          title: "Parallel",
-          subtitle: "Next.js · Tailwind · tRPC · Prisma · NextAuth",
-          route: "/",
-          image: `https://picsum.photos/seed/${index + 1}/540/240/`,
-          icon: <GoProject />,
-        }))}
-      />
-    </section>
-  );
-}
-
-function Articles() {
-  return (
-    <section className="flex flex-col gap-y-12 transition-transform">
-      <HighlightCardRow
-        title="Articles"
-        items={Array.from({ length: 5 }, (_, index) => ({
-          title: "Parallel",
-          subtitle: "Next.js · Tailwind · tRPC · Prisma · NextAuth",
-          route: "/",
-          image: `https://picsum.photos/seed/${index + 1}/540/240/`,
-          icon: <GoProject />,
-        }))}
-      />
     </section>
   );
 }
