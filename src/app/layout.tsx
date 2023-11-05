@@ -7,6 +7,7 @@ import { ThemeProvider } from "~/app/components/theme/theme-provider";
 import { Navigation } from "~/app/components/navigation/navigation";
 import { type PropsWithChildren } from "react";
 import { Footer } from "~/app/components/footer";
+import { Toaster } from "~/app/components/ui/toaster";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <Navigation />
             {children}
             <Footer />
+            <Toaster />
           </ThemeProvider>
         </TRPCReactProvider>
       </body>
