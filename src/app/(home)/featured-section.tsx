@@ -1,4 +1,4 @@
-import { GoProject } from "react-icons/go";
+import { GoCommandPalette, GoPencil } from "react-icons/go";
 import { HighlightCardRow } from "~/app/components/highlight-card-row";
 import { getAllFeaturedPostsMeta } from "~/server/utils/mdx/mdx";
 
@@ -9,6 +9,7 @@ export default async function Featured() {
     .map(([source, posts]) =>
       posts.map((post) => ({
         ...post,
+        source,
         slug: `/${source}/${post.slug}`,
       })),
     )
@@ -24,7 +25,8 @@ export default async function Featured() {
           route: post.slug,
           image:
             post.image ?? `https://picsum.photos/seed/${index + 1}/540/240/`,
-          icon: <GoProject />,
+          icon:
+            post.source === "projects" ? <GoCommandPalette /> : <GoPencil />,
         }))}
       />
     </section>

@@ -1,4 +1,4 @@
-import { GoProject } from "react-icons/go";
+import { GoPencil } from "react-icons/go";
 import { HighlightCardRow } from "~/app/components/highlight-card-row";
 import { getAllPostsMeta } from "~/server/utils/mdx/mdx";
 
@@ -15,7 +15,7 @@ export default async function Articles() {
           route: `/articles/${article.slug}`,
           image:
             article.image ?? `https://picsum.photos/seed/${index + 1}/540/240/`,
-          icon: <GoProject />,
+          icon: <GoPencil />,
         }))}
       />
     </section>
