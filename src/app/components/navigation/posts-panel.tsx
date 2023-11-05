@@ -88,28 +88,6 @@ function PostsPanelContent({ source, posts }: Props) {
                     />
                   ),
               )}
-              {posts.map(
-                (post) =>
-                  post.slug !== segment && (
-                    <PostCard
-                      key={post.slug}
-                      href={`/${source}/${post.slug}`}
-                      title={post.title}
-                      date={post.date}
-                    />
-                  ),
-              )}
-              {posts.map(
-                (post) =>
-                  post.slug !== segment && (
-                    <PostCard
-                      key={post.slug}
-                      href={`/${source}/${post.slug}`}
-                      title={post.title}
-                      date={post.date}
-                    />
-                  ),
-              )}
             </div>
           </>
         )}
