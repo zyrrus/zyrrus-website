@@ -9,24 +9,9 @@ import {
   type PostFrontmatter,
   type SourceRoute,
 } from "~/server/utils/mdx/types";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "~/app/components/ui/sheet";
-import { cva } from "class-variance-authority";
+import { Sheet, SheetContent, SheetTrigger } from "~/app/components/ui/sheet";
 import { Button } from "~/app/components/ui/button";
 import { GoKebabHorizontal } from "react-icons/go";
-
-const navigation = cva([
-  "sticky z-30",
-  "border-neutral-200 bg-neutral-50/75 backdrop-blur-lg",
-  "dark:border-r-neutral-700 dark:bg-neutral-800/75",
-  "top-0 left-0 right-0 border-b",
-]);
 
 interface Props {
   source: SourceRoute;
@@ -41,7 +26,7 @@ function PostsPanel(props: Props) {
       <div className="fixed bottom-0 left-[72px] top-0 z-20 hidden w-60 border-r border-r-neutral-200 bg-neutral-50/75 pt-8 backdrop-blur-lg dark:border-r-neutral-700 dark:bg-neutral-800/75 xl:block 2xl:w-80">
         <PostsPanelContent {...props} />
       </div>
-      <div className={navigation({ className: "xl:hidden" })}>
+      <div className="sticky left-0 right-0 top-0 z-30 border-b border-neutral-200 bg-neutral-50/75 backdrop-blur-lg dark:border-neutral-700 dark:bg-neutral-800/75 xl:hidden">
         <div className="flex h-full w-full flex-row items-center justify-between p-2 pl-4 text-lg">
           <p className="font-medium capitalize">{props.source}</p>
           <Sheet>
@@ -92,6 +77,28 @@ function PostsPanelContent({ source, posts }: Props) {
               Up next
             </h2>
             <div className="flex flex-col gap-y-2">
+              {posts.map(
+                (post) =>
+                  post.slug !== segment && (
+                    <PostCard
+                      key={post.slug}
+                      href={`/${source}/${post.slug}`}
+                      title={post.title}
+                      date={post.date}
+                    />
+                  ),
+              )}
+              {posts.map(
+                (post) =>
+                  post.slug !== segment && (
+                    <PostCard
+                      key={post.slug}
+                      href={`/${source}/${post.slug}`}
+                      title={post.title}
+                      date={post.date}
+                    />
+                  ),
+              )}
               {posts.map(
                 (post) =>
                   post.slug !== segment && (

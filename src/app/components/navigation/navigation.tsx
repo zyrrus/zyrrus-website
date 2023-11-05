@@ -20,7 +20,7 @@ const navigation = cva([
   // Shared
   "fixed z-30",
   "border-neutral-200 bg-neutral-50/75 backdrop-blur-lg",
-  "dark:border-r-neutral-700 dark:bg-neutral-800/75",
+  "dark:border-neutral-700 dark:bg-neutral-800/75",
   "bottom-0 left-0",
   // Mobile
   "right-0 border-t",
