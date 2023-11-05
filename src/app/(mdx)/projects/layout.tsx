@@ -8,7 +8,9 @@ export default async function ProjectsLayout({ children }: PropsWithChildren) {
   return (
     <>
       <PostsPanel source="projects" posts={posts} />
-      <main className="container mb-24 mt-10">{children}</main>
+      <main className="container prose prose-neutral mb-24 mt-10 dark:prose-invert">
+        {children}
+      </main>
     </>
   );
 }
