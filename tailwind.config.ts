@@ -63,6 +63,9 @@ export default {
         "cutout-depth-1":
           "0px 25px 15px 0px rgba(0, 0, 0, 0.25) inset, 0px 48px 15px 0px rgba(0, 0, 0, 0.15) inset",
       },
+      transitionTimingFunction: {
+        "bounce-up": "cubic-bezier(0.5, 2.5, 0.7, 0.7)",
+      },
       typography(theme: PluginAPI["theme"]) {
         return {
           DEFAULT: {

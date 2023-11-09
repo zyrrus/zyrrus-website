@@ -43,7 +43,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
     <Link href={route} className="text-primary" style={{ width: width }}>
       <Card
         depth={0}
-        className="mt-3 transition-transform hover:-translate-y-3"
+        className="ease-bounce-up mt-4 transition-transform duration-300 hover:-translate-y-3"
       >
         <Card depth={1} className="relative h-60 w-full overflow-hidden">
           <Image src={image} alt={title} className="object-cover" fill />
