@@ -15,6 +15,7 @@ import { SidebarCommand } from "~/app/components/navigation/sidebar-command";
 import { ThemeToggle } from "~/app/components/theme/theme-toggle";
 import { Button } from "~/app/components/ui/button";
 import { type PropsWithChildren } from "react";
+import { usePathname } from "next/navigation";
 
 const navigation = cva([
   // Shared
@@ -37,7 +38,7 @@ const navigationList = cva([
 ]);
 
 const separator = cva([
-  "rounded-full bg-neutral-900 dark:bg-neutral-50 h-0.5 w-0.5 shrink-0",
+  "rounded-full bg-neutral-400 dark:bg-neutral-500 h-0.5 w-0.5 shrink-0",
   // Mobile
   "mx-2 hidden",
   // Desktop
@@ -47,7 +48,10 @@ const separator = cva([
 // TODO: Finish setting up "current page" state
 const icon = cva("h-6 w-6", {
   variants: {
-    status: { inactive: "text-neutral-400", active: "text-primary" },
+    status: {
+      inactive: "dark:text-neutral-400 text-neutral-500",
+      active: "text-primary",
+    },
   },
 });
 
@@ -79,6 +83,16 @@ const links: {
 ];
 
 const Navigation = () => {
+  const pathname = usePathname();
+
+  const getActiveStatus = (href: string): boolean => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname.startsWith(href);
+  };
+
   return (
     <nav className={navigation()}>
       <ul className={navigationList()}>
@@ -87,7 +101,11 @@ const Navigation = () => {
             <WithTooltip tooltip={tooltip}>
               <Button variant="ghost" size="icon" asChild>
                 <Link href={href}>
-                  <Icon className={icon({ status: "active" })} />
+                  <Icon
+                    className={icon({
+                      status: getActiveStatus(href) ? "active" : "inactive",
+                    })}
+                  />
                 </Link>
               </Button>
             </WithTooltip>
@@ -101,13 +119,14 @@ const Navigation = () => {
             </div>
           </WithTooltip>
         </li>
-        <li className="hidden sm:block">
+        {/* Temporarily removed Command element */}
+        {/* <li className="hidden sm:block">
           <WithTooltip tooltip="Search">
             <div>
               <SidebarCommand />
             </div>
           </WithTooltip>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
