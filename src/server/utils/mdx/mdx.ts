@@ -2,7 +2,6 @@ import fs, { type Dirent } from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import {
-  sourceRoutes,
   type PostFrontmatter,
   type SourceRoute,
 } from "~/server/utils/mdx/types";
@@ -22,20 +21,34 @@ const isValidMdxPage = (dirent: Dirent) => {
   );
 };
 
-const getAllFiles = (source: SourceRoute): Dirent[] =>
-  fs
+const getAllFiles = async (
+  source: SourceRoute,
+): Promise<(PostFrontmatter & { slug: string })[]> => {
+  const files = fs
     .readdirSync(getSourceDir(source), {
       withFileTypes: true,
     })
     .filter((dirent) => dirent.isDirectory())
     .filter(isValidMdxPage);
 
-export const getFirstPostMetaBySource = async (source: SourceRoute) => {
-  const files = getAllFiles(source);
+  const posts = await Promise.all(
+    files.map(async (dirent) => {
+      const { meta } = await getPostMetaBySlug(dirent.name, source);
+      return meta;
+    }),
+  );
 
-  if (files.length > 0) {
-    const { meta } = await getPostMetaBySlug(files[0]!.name, source);
-    return meta;
+  return posts
+    .filter((post) => !post.hidden)
+    .map((post) => ({ ...post, order: post.order ?? 9999 }))
+    .sort((a, b) => a.order - b.order);
+};
+
+export const getFirstPostMetaBySource = async (source: SourceRoute) => {
+  const posts = await getAllFiles(source);
+
+  if (posts[0] !== undefined) {
+    return posts[0];
   }
 };
 
@@ -54,31 +67,7 @@ export const getPostMetaBySlug = async (slug: string, source: SourceRoute) => {
 };
 
 export const getAllPostsMeta = async (source: SourceRoute) => {
-  const posts: (PostFrontmatter & { slug: string })[] = await Promise.all(
-    getAllFiles(source).map(async (dirent) => {
-      const { meta } = await getPostMetaBySlug(dirent.name, source);
-      return meta;
-    }),
-  );
+  const posts = await getAllFiles(source);
 
   return posts;
-};
-
-export const getAllFeaturedPostsMeta = async () => {
-  const featuredPostsDictionary: Record<
-    string,
-    (PostFrontmatter & {
-      slug: string;
-    })[]
-  > = {};
-
-  await Promise.all(
-    sourceRoutes.map(async (source) => {
-      const posts = await getAllPostsMeta(source);
-      const featuredPosts = posts.filter((post) => post.isFeatured);
-      featuredPostsDictionary[source] = featuredPosts;
-    }),
-  );
-
-  return featuredPostsDictionary;
 };

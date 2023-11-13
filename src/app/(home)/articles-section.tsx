@@ -6,15 +6,14 @@ export default async function Articles() {
   const articles = await getAllPostsMeta("articles");
 
   return (
-    <section className="flex flex-col gap-y-12 transition-transform">
+    <section className="flex flex-col gap-y-12">
       <HighlightCardRow
         title="Articles"
-        items={articles.map((article, index) => ({
+        items={articles.map((article) => ({
           title: article.title,
           tags: article.tags,
           route: `/articles/${article.slug}`,
-          image:
-            article.image ?? `https://picsum.photos/seed/${index + 1}/540/240/`,
+          image: article.image ?? `https://picsum.photos/540/240/`,
           icon: <GoPencil />,
         }))}
       />

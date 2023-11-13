@@ -1,10 +1,16 @@
 ---
 title: Web Accessibility Crash Course
 date: 11/02/2023
-tags: 
+tags:
 image: https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?auto=format&fit=crop&q=80&w=1972&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-isFeatured: true
+order: 20
 ---
+
+import { Callout } from "~/app/components/mdx/callout";
+
+<Callout variant="warning">
+  ChatGPT made this up from a super brief outline I gave it.
+</Callout>
 
 # Web Accessibility Crash Course: A Guide for Developers
 
@@ -35,7 +41,9 @@ ARIA attributes provide additional information to assistive technologies like sc
 Screen readers are vital for users with visual impairments. To enhance their experience, you can implement "Skip to Content" links, which allow users to bypass navigation menus and jump directly to the main content. Here's how to create one:
 
 ```html
-<a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
+<a href="#main-content" class="visually-hidden focusable"
+  >Skip to main content</a
+>
 ```
 
 Add the following CSS to visually hide it but keep it accessible:
@@ -45,7 +53,8 @@ Add the following CSS to visually hide it but keep it accessible:
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
-  height: 1px; width: 1px;
+  height: 1px;
+  width: 1px;
 }
 ```
 

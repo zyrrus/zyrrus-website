@@ -33,6 +33,9 @@ function PostsPanel(props: Props) {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <GoKebabHorizontal className="h-6 w-6 text-primary" />
+                <span className="sr-only">
+                  Open "More {props.source}" panel
+                </span>
               </Button>
             </SheetTrigger>
             <SheetContent>

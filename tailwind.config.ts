@@ -5,12 +5,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: "class",
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
     fontFamily: {
       sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
@@ -72,7 +67,8 @@ export default {
             css: {
               "code::before": { content: "none" },
               "code::after": { content: "none" },
-              code: {
+              // Inline code blocks
+              "code:not(:is(pre code))": {
                 padding: "0.2em 0.4em",
                 whiteSpace: "break-spaces",
                 fontSize: "85%",
@@ -82,7 +78,7 @@ export default {
                 color: theme("colors.neutral.700"),
                 backgroundColor: theme("colors.neutral.200"),
               },
-              ".dark code": {
+              ".dark code:not(:is(pre code))": {
                 color: theme("colors.neutral.300"),
                 backgroundColor: theme("colors.neutral.950"),
               },
@@ -129,6 +125,14 @@ export default {
         ".bg-0": {
           backgroundColor: theme("colors.neutral.50"),
           "@apply dark:bg-neutral-800": {},
+        },
+        ".bg-1": {
+          backgroundColor: theme("colors.neutral.100"),
+          "@apply dark:bg-neutral-850": {},
+        },
+        ".bg-2": {
+          backgroundColor: theme("colors.neutral.200"),
+          "@apply dark:bg-neutral-900": {},
         },
       });
     }),

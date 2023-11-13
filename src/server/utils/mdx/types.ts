@@ -9,5 +9,7 @@ export interface PostFrontmatter extends Record<string, unknown> {
   date: string;
   tags?: string[];
   image?: string;
-  isFeatured?: boolean;
+  featured?: boolean;
+  hidden?: boolean;
+  order?: number;
 }

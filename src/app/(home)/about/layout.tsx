@@ -1,9 +1,6 @@
 import { type PropsWithChildren } from "react";
+import { MainContainer } from "~/app/components/mdx/main-container";
 
 export default function AboutLayout({ children }: PropsWithChildren) {
-  return (
-    <main className="container prose prose-neutral mb-24 mt-10 dark:prose-invert">
-      {children}
-    </main>
-  );
+  return <MainContainer>{children}</MainContainer>;
 }

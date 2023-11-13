@@ -13,9 +13,9 @@ export default function About() {
         </p>
         <p>
           I'm passionate about creating streamlined and accessible software
-          solutions. Whether it's simplifying complex code to solve intricate
-          bugs or teaching others the ropes of web development, my commitment to
-          excellence shines through in all my work.
+          solutions. Whether it's solving intricate bugs, simplifying complex
+          code, or teaching others the ropes of web development, my commitment
+          to excellence shines through in all my work.
         </p>
       </div>
     </section>

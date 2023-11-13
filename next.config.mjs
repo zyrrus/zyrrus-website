@@ -5,10 +5,10 @@
 await import("./src/env.mjs");
 
 import createMDX from "@next/mdx";
+import rehypePrettyCode from "rehype-pretty-code";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
-// import rehypePrism from "@mapbox/rehype-prism";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -31,10 +31,15 @@ const config = {
   },
 };
 
+/** @type {import('rehype-pretty-code').Options} */
+const rehypePrettyCodeOptions = {
+  theme: "nord",
+};
+
 const withMDX = createMDX({
   options: {
     remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-    // rehypePlugins: [rehypePrism],
+    rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
   },
 });
 

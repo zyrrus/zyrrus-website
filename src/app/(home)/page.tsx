@@ -1,6 +1,6 @@
 import Hero from "~/app/(home)/hero-section";
 import About from "~/app/(home)/about-section";
-import Featured from "~/app/(home)/featured-section";
+import Projects from "~/app/(home)/projects-section";
 import Articles from "~/app/(home)/articles-section";
 import { HeroGraphic } from "~/app/(home)/hero-graphic";
 
@@ -11,7 +11,7 @@ export default function Home() {
       <HeroGraphic />
       <Hero />
       <About />
-      <Featured />
+      <Projects />
       <Articles />
     </main>
   );

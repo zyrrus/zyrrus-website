@@ -56,7 +56,7 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
       >
         {title}
       </h2>
-      <ScrollArea className="pb-6">
+      <ScrollArea className="pb-6" scrollbarHorizontalClassname="max-w-[588px]">
         <div className="flex w-full flex-row gap-x-8 px-6">
           {spacer}
           {items.map((card, index) => (

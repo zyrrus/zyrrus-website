@@ -40,21 +40,24 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   }, []);
 
   return (
-    <Link href={route} className="text-primary" style={{ width: width }}>
+    <Link href={route} className="mt-4 text-primary" style={{ width: width }}>
       <Card
         depth={0}
-        className="ease-bounce-up mt-4 transition-transform duration-300 hover:-translate-y-3"
+        className="transition-transform duration-300 hover:-translate-y-3 motion-safe:ease-bounce-up"
       >
-        <Card depth={1} className="relative h-60 w-full overflow-hidden">
-          <Image src={image} alt={title} className="object-cover" fill />
-          <div className="absolute inset-0 shadow-cutout-depth-1" />
+        <Card
+          depth={1}
+          className="relative h-60 w-full overflow-hidden"
+          overlayShadow
+        >
+          <Image src={image} alt="" className="object-cover object-top" fill />
         </Card>
-        <div className="flex flex-row justify-between px-6 py-3">
+        <div className="flex flex-row justify-between gap-x-4 px-6 py-3">
           <div className="flex flex-row items-center gap-x-2">
             {icon}
-            <p className="font-medium">{title}</p>
+            <p className="line-clamp-1 font-medium">{title}</p>
           </div>
-          <p className="text-secondary">{tags?.join(" · ")}</p>
+          <p className="line-clamp-1 text-right">{tags?.join(" · ")}</p>
         </div>
       </Card>
     </Link>

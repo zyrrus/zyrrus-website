@@ -106,12 +106,18 @@ const Navigation = () => {
                       status: getActiveStatus(href) ? "active" : "inactive",
                     })}
                   />
+                  <span className="sr-only">{tooltip}</span>
                 </Link>
               </Button>
             </WithTooltip>
           </li>
         ))}
-        <Separator.Root decorative className={separator()} />
+        <Separator.Root
+          decorative
+          className={separator()}
+          role="presentation"
+          aria-hidden="true"
+        />
         <li className="hidden sm:block">
           <WithTooltip tooltip="Toggle theme">
             <div>
