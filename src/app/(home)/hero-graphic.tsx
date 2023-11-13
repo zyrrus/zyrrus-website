@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   type Cell,
   radius,
@@ -11,8 +11,9 @@ import {
 
 const HeroGraphic: React.FC = () => {
   const points = orchestrateCells();
+
   return (
-    <div className="absolute right-0 top-0 -z-50 h-[200vh] bg-cover sm:left-1/2">
+    <div className="absolute right-0 top-0 -z-50 h-[1000px] max-w-[1000px] bg-cover sm:left-1/2">
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +79,7 @@ const HeroGraphic: React.FC = () => {
           y="0"
           width="100%"
           height="100%"
-          href="/images/wave.png"
+          href="/images/wave.webp"
           preserveAspectRatio="xMinYMin slice"
           clipPath="url(#cut-off-bottom)"
         />
@@ -110,6 +111,8 @@ const MotionCell = ({
   delay?: number;
   isShadow?: boolean;
 }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.rect
       key={`(${start.x}, ${start.y}) - (${end.x}, ${end.y})`}
@@ -123,11 +126,15 @@ const MotionCell = ({
       // Setting origin to (0, 0) fixes rotation pivot point
       style={{ originX: 0, originY: 0 }}
       // Translation is relative to the initial (x, y)
-      animate={{
-        x: [0, end.x - start.x],
-        y: [0, end.y - start.y],
-        rotate: [rotation],
-      }}
+      animate={
+        shouldReduceMotion
+          ? { rotate: [rotation] }
+          : {
+              x: [0, end.x - start.x],
+              y: [0, end.y - start.y],
+              rotate: [rotation],
+            }
+      }
       transition={{
         delay: delay,
         repeat: Infinity,
