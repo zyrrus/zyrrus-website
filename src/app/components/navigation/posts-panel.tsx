@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { Suspense } from "react";
 import { cn } from "~/app/utils/styles";
 import {
   isSourceRoute,
@@ -28,7 +27,9 @@ function PostsPanel(props: Props) {
       </div>
       <div className="sticky left-0 right-0 top-0 z-30 border-b border-neutral-200 bg-neutral-50/75 backdrop-blur-lg dark:border-neutral-700 dark:bg-neutral-800/75 xl:hidden">
         <div className="flex h-full w-full flex-row items-center justify-between p-2 pl-4 text-lg">
-          <p className="font-medium capitalize">{props.source}</p>
+          <Link href={`/${props.source}`} className="font-medium capitalize">
+            {props.source}
+          </Link>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -57,44 +58,40 @@ function PostsPanelContent({ source, posts }: Props) {
 
   return (
     <aside>
-      <Suspense>
-        <h1 className="mb-3 px-4 font-bold capitalize">{source}</h1>
-        {currentPost && (
-          <>
-            <h2 className=" mb-2 px-4 font-medium text-secondary">
-              Now reading
-            </h2>
-            <PostCard
-              href={`/${source}/${segment}`}
-              isActive
-              title={currentPost.title}
-              date={currentPost.date}
-            />
-          </>
-        )}
-      </Suspense>
-      <Suspense>
-        {posts.length > (currentPost ? 1 : 0) && (
-          <>
-            <h2 className=" mb-2 mt-6 px-4 font-medium text-secondary">
-              Up next
-            </h2>
-            <div className="flex flex-col gap-y-2">
-              {posts.map(
-                (post) =>
-                  post.slug !== segment && (
-                    <PostCard
-                      key={post.slug}
-                      href={`/${source}/${post.slug}`}
-                      title={post.title}
-                      date={post.date}
-                    />
-                  ),
-              )}
-            </div>
-          </>
-        )}
-      </Suspense>
+      <h1 className="mb-3 px-4 font-bold capitalize">
+        <Link href={`/${source}`}>{source}</Link>
+      </h1>
+      {currentPost && (
+        <>
+          <h2 className=" mb-2 px-4 font-medium text-secondary">Now reading</h2>
+          <PostCard
+            href={`/${source}/${segment}`}
+            isActive
+            title={currentPost.title}
+            date={currentPost.date}
+          />
+        </>
+      )}
+      {posts.length > (currentPost ? 1 : 0) && (
+        <>
+          <h2 className=" mb-2 mt-6 px-4 font-medium text-secondary">
+            Up next
+          </h2>
+          <div className="flex flex-col gap-y-2">
+            {posts.map(
+              (post) =>
+                post.slug !== segment && (
+                  <PostCard
+                    key={post.slug}
+                    href={`/${source}/${post.slug}`}
+                    title={post.title}
+                    date={post.date}
+                  />
+                ),
+            )}
+          </div>
+        </>
+      )}
     </aside>
   );
 }
