@@ -21,7 +21,7 @@ const HeroGraphic: React.FC = () => {
         height="100%"
       >
         <defs>
-          <motion.clipPath id="cut-off-bottom">
+          <motion.clipPath id="mask">
             {points.map(({ start, end }, i) => {
               return (
                 <MotionCell
@@ -81,7 +81,7 @@ const HeroGraphic: React.FC = () => {
           height="100%"
           href="/images/wave.webp"
           preserveAspectRatio="xMinYMin slice"
-          clipPath="url(#cut-off-bottom)"
+          clipPath="url(#mask)"
         />
 
         {points.map(({ start, end }, i) => {
@@ -115,7 +115,6 @@ const MotionCell = ({
 
   return (
     <motion.rect
-      key={`(${start.x}, ${start.y}) - (${end.x}, ${end.y})`}
       width={end.width}
       height={end.height}
       rx={radius}
