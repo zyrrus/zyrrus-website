@@ -7,7 +7,8 @@ import {
 } from "~/server/utils/mdx/types";
 
 const rootDir = path.join(process.cwd(), "src", "app", "(mdx)");
-const getSourceDir = (source: SourceRoute) => path.join(rootDir, source);
+const getSourceDir = (source: SourceRoute) =>
+  path.join(rootDir, source, "(posts)");
 
 const isValidMdxPage = (dirent: Dirent) => {
   const { name: fileName, path: filePath } = dirent;
