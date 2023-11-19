@@ -1,7 +1,16 @@
-import { redirect } from "next/navigation";
-import { getFirstPostMetaBySource } from "~/server/utils/mdx/mdx";
+import AllPosts from "~/app/(mdx)/all-posts";
+import { projectToCardMatter } from "~/server/utils/mdx/converters";
+import { getAllPostsMeta } from "~/server/utils/mdx/mdx";
 
 export default async function Articles() {
-  const firstArticle = await getFirstPostMetaBySource("articles");
-  redirect(`/articles/${firstArticle?.slug}`);
+  const allArticles = (await getAllPostsMeta("articles")).map(
+    projectToCardMatter("articles"),
+  );
+
+  return (
+    <main className="not-prose flex flex-col gap-y-36 pb-24 pt-52">
+      <h1 className="container display-text-['Articles'] text-2xl">Articles</h1>
+      <AllPosts originalPosts={allArticles} />
+    </main>
+  );
 }

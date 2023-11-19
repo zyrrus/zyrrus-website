@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, type ReactNode, useEffect } from "react";
 import { Card } from "~/app/components/card";
 import { clamp } from "~/app/utils/math";
+import { cn } from "~/app/utils/styles";
 
 export interface HighlightCardProps {
   title: string;
@@ -12,6 +13,8 @@ export interface HighlightCardProps {
   route: string;
   image: string;
   icon: ReactNode;
+  disableFullWidth?: boolean;
+  className?: string;
 }
 
 const HighlightCard: React.FC<HighlightCardProps> = ({
@@ -20,6 +23,8 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   route,
   image,
   icon,
+  disableFullWidth = false,
+  className,
 }) => {
   const padding = 24 * 2;
   const maxWidth = 588 - padding;
@@ -40,7 +45,11 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   }, []);
 
   return (
-    <Link href={route} className="mt-4 text-primary" style={{ width: width }}>
+    <Link
+      href={route}
+      className={cn("mt-4 text-primary", className)}
+      style={{ width: disableFullWidth ? undefined : width }}
+    >
       <Card
         depth={0}
         className="transition-transform duration-300 hover:-translate-y-3 motion-safe:ease-bounce-up"
