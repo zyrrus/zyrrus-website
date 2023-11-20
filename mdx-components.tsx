@@ -7,14 +7,15 @@ export function useMDXComponents(
   defaultComponents: MDXComponents,
 ): MDXComponents {
   return {
-    h1: ({ children }) => <h1 className="text-2xl font-medium">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-lg">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-lg">{children}</h3>,
+    h1: (props) => <h1 className="text-2xl font-medium" {...props} />,
+    h2: (props) => <h2 className="text-lg" {...props} />,
+    h3: (props) => <h3 className="text-lg" {...props} />,
     pre: ({ children }) => (
       <pre>
         <ScrollArea className="-pb-5 pt-5">{children}</ScrollArea>
       </pre>
     ),
+    a: (props) => <a target="_blank" rel="noopener noreferrer" {...props} />,
     // inlineCode: ({ children }) => (
     //   <code className="bg-blue-600">{children}</code>
     // ),
