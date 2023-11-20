@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Card } from "~/app/components/card";
+import { WiggleWrapper } from "~/app/components/wiggle-wrapper";
 import { cn } from "~/app/utils/styles";
 
 const BannerImage: React.FC<{
@@ -8,15 +9,17 @@ const BannerImage: React.FC<{
   className?: string;
 }> = ({ src, alt = "", className }) => {
   return (
-    <Card
-      className={cn(
-        "not-prose relative aspect-video h-auto max-w-full",
-        className,
-      )}
-      overlayShadow
-    >
-      <Image src={src} alt={alt} className="object-cover" fill />
-    </Card>
+    <WiggleWrapper>
+      <Card
+        className={cn(
+          "not-prose relative aspect-video h-auto max-w-full",
+          className,
+        )}
+        overlayShadow
+      >
+        <Image src={src} alt={alt} className="object-cover" fill />
+      </Card>
+    </WiggleWrapper>
   );
 };
 

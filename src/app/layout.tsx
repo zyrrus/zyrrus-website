@@ -6,7 +6,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { ThemeProvider } from "~/app/components/theme/theme-provider";
 import { Navigation } from "~/app/components/navigation/navigation";
 import { type PropsWithChildren } from "react";
-import { Footer } from "~/app/components/footer";
+import { Footer } from "~/app/components/navigation/footer";
 import { Toaster } from "~/app/components/ui/toaster";
 
 const inter = Inter({

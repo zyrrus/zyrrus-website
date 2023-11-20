@@ -52,15 +52,11 @@ export default function Filters({ originalPosts, posts, setPosts }: Props) {
         ),
     );
 
-    console.log("CLICK", filterResults);
-    console.log("CLICK-Original", originalPosts);
-
     setPosts(filterResults.length > 0 ? filterResults : originalPosts);
   };
 
   const handleReset = () => {
     handleResetFilters();
-    console.log("RESET", originalPosts);
     setPosts(originalPosts);
   };
 
