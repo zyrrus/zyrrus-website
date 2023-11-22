@@ -11,5 +11,4 @@ export interface PostFrontmatter extends Record<string, unknown> {
   image?: string;
   featured?: boolean;
   hidden?: boolean;
-  order?: number;
 }

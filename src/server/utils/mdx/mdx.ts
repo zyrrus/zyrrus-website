@@ -41,8 +41,7 @@ const getAllFiles = async (
 
   return posts
     .filter((post) => !post.hidden)
-    .map((post) => ({ ...post, order: post.order ?? 9999 }))
-    .sort((a, b) => a.order - b.order);
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
 export const getFirstPostMetaBySource = async (source: SourceRoute) => {
