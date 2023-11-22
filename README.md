@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://zyrrus.dev">
-        <img src="https://raw.githubusercontent.com/zyrrus/zyrrus-website/main/public/assets/rainbow-ring.png" alt="Ring Logo" width="100" height="100" />
+        <img src="https://raw.githubusercontent.com/zyrrus/zyrrus-website/main/public/rainbow-ring.png" alt="Ring Logo" width="100" height="100" />
     </a>
 </div>
 
