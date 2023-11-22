@@ -11,6 +11,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "~/app/components/ui/sheet";
 import { Button } from "~/app/components/ui/button";
 import { GoKebabHorizontal } from "react-icons/go";
+import { ScrollArea } from "~/app/components/ui/scroll-area";
 
 interface Props {
   source: SourceRoute;
@@ -22,9 +23,11 @@ interface Props {
 function PostsPanel(props: Props) {
   return (
     <>
+      {/* Desktop side panel */}
       <div className="fixed bottom-0 left-[72px] top-0 z-20 hidden w-60 border-r border-r-neutral-200 bg-neutral-50/75 pt-8 backdrop-blur-lg dark:border-r-neutral-700 dark:bg-neutral-800/75 xl:block 2xl:w-80">
         <PostsPanelContent {...props} />
       </div>
+      {/* Mobile top bar + drawer */}
       <div className="sticky left-0 right-0 top-0 z-30 border-b border-neutral-200 bg-neutral-50/75 backdrop-blur-lg dark:border-neutral-700 dark:bg-neutral-800/75 xl:hidden">
         <div className="flex h-full w-full flex-row items-center justify-between p-2 pl-4 text-lg">
           <Link href={`/${props.source}`} className="font-medium capitalize">
@@ -78,17 +81,20 @@ function PostsPanelContent({ source, posts }: Props) {
             Up next
           </h2>
           <div className="flex flex-col gap-y-2">
-            {posts.map(
-              (post) =>
-                post.slug !== segment && (
-                  <PostCard
-                    key={post.slug}
-                    href={`/${source}/${post.slug}`}
-                    title={post.title}
-                    date={post.date}
-                  />
-                ),
-            )}
+            {/* Height = screen height - height of "Projects" through "Up next" */}
+            <ScrollArea className="h-[calc(100vh-228px)]">
+              {posts.map(
+                (post) =>
+                  post.slug !== segment && (
+                    <PostCard
+                      key={post.slug}
+                      href={`/${source}/${post.slug}`}
+                      title={post.title}
+                      date={post.date}
+                    />
+                  ),
+              )}
+            </ScrollArea>
           </div>
         </>
       )}
