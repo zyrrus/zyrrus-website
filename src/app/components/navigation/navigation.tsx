@@ -45,7 +45,6 @@ const separator = cva([
   "xl:my-2 xl:mx-0 sm:block",
 ]);
 
-// TODO: Finish setting up "current page" state
 const icon = cva("h-6 w-6", {
   variants: {
     status: {
