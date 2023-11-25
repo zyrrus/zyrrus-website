@@ -2,7 +2,9 @@ import { useState } from "react";
 
 export default function useFilters(filterNames: string[]) {
   const [filters, setFilters] = useState(
-    filterNames.map((filter) => ({ name: filter, isActive: false })),
+    filterNames
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .map((filter) => ({ name: filter, isActive: false })),
   );
 
   const handleResetFilters = () => {
