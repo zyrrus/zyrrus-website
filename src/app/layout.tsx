@@ -1,5 +1,6 @@
 import "~/styles/globals.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <Toaster />
           </ThemeProvider>
         </TRPCReactProvider>
+        <Analytics />
       </body>
     </html>
   );
