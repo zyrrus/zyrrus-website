@@ -39,8 +39,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <Footer />
             <Toaster />
           </ThemeProvider>
+          <Analytics />
         </TRPCReactProvider>
-        <Analytics />
       </body>
     </html>
   );
