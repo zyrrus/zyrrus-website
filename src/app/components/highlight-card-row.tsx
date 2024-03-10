@@ -5,7 +5,8 @@ import {
   HighlightCard,
   type HighlightCardProps,
 } from "~/app/components/highlight-card";
-import { ScrollArea } from "~/app/components/ui/scroll-area";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export interface HighlightCardRowProps {
   title: string;
@@ -16,36 +17,7 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
   title,
   items,
 }) => {
-  const containerRef = useRef<HTMLHeadingElement | null>(null);
-  const [gutterWidth, setGutterWidth] = useState(0);
-  const columnGap = 32;
-
-  useEffect(() => {
-    const updateDistance = () => {
-      if (containerRef.current) {
-        const boundingRect = containerRef.current.getBoundingClientRect();
-        const distance = boundingRect.left;
-        setGutterWidth(distance);
-      }
-    };
-
-    updateDistance();
-
-    window.addEventListener("resize", updateDistance);
-    return () => {
-      window.removeEventListener("resize", updateDistance);
-    };
-  }, [containerRef.current]);
-
-  const spacer = (
-    <div
-      className="flex-shrink-0"
-      style={{
-        width: Math.max(gutterWidth, 0),
-        marginRight: -columnGap,
-      }}
-    />
-  );
+  const { containerRef, containerWidth } = useContainerWidth();
 
   return (
     <>
@@ -56,17 +28,44 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
       >
         {title}
       </h2>
-      <ScrollArea className="pb-6" scrollbarHorizontalClassname="max-w-[588px]">
-        <div className="flex w-full flex-row gap-x-8 px-6">
-          {spacer}
-          {items.map((card, index) => (
-            <HighlightCard key={index} {...card} />
-          ))}
-          {spacer}
-        </div>
-      </ScrollArea>
+      <Swiper
+        className="max-w-[588px] !overflow-visible !px-6"
+        width={containerWidth}
+        slidesPerView={1}
+        slidesPerGroup={1}
+        spaceBetween={containerWidth < 588 ? 12 : 32}
+      >
+        {items.map((card, index) => (
+          <SwiperSlide key={index}>
+            <HighlightCard {...card} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
+};
+
+const useContainerWidth = () => {
+  const containerRef = useRef<HTMLHeadingElement | null>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    const updateContainerWidth = () => {
+      if (containerRef.current) {
+        const boundingRect = containerRef.current.getBoundingClientRect();
+        setContainerWidth(boundingRect.width);
+      }
+    };
+
+    updateContainerWidth();
+
+    window.addEventListener("resize", updateContainerWidth);
+    return () => {
+      window.removeEventListener("resize", updateContainerWidth);
+    };
+  }, [containerRef.current]);
+
+  return { containerRef, containerWidth };
 };
 
 export { HighlightCardRow };
