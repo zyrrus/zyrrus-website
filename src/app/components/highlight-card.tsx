@@ -56,7 +56,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
       >
         <Card
           depth={1}
-          className="relative h-60 w-full overflow-hidden"
+          className="relative aspect-[9/4] w-full overflow-hidden"
           overlayShadow
         >
           <Image src={image} alt="" className="object-cover object-top" fill />
