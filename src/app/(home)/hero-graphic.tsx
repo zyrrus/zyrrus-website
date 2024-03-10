@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   type Cell,
@@ -10,7 +10,7 @@ import {
 } from "~/app/(home)/hero-graphic-generation";
 
 const HeroGraphic: React.FC = () => {
-  const points = orchestrateCells();
+  const points = useMemo(orchestrateCells, []);
 
   return (
     <div className="absolute right-0 top-0 -z-50 h-[1000px] max-w-[1000px] bg-cover sm:left-1/2">
