@@ -6,7 +6,7 @@ export default async function Projects() {
   const projects = await getAllPostsMeta("projects");
 
   return (
-    <section className="flex flex-col gap-y-12">
+    <section className="flex flex-col gap-y-8">
       <HighlightCardRow
         title="Projects"
         items={projects.map((project) => ({

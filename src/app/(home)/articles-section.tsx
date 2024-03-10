@@ -6,7 +6,7 @@ export default async function Articles() {
   const articles = await getAllPostsMeta("articles");
 
   return (
-    <section className="flex flex-col gap-y-12">
+    <section className="flex flex-col gap-y-8">
       <HighlightCardRow
         title="Articles"
         items={articles.map((article) => ({

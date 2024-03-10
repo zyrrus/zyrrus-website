@@ -28,19 +28,21 @@ const HighlightCardRow: React.FC<HighlightCardRowProps> = ({
       >
         {title}
       </h2>
-      <Swiper
-        className="max-w-[588px] !overflow-visible !px-6"
-        width={containerWidth}
-        slidesPerView={1}
-        slidesPerGroup={1}
-        spaceBetween={containerWidth < 588 ? 12 : 32}
-      >
-        {items.map((card, index) => (
-          <SwiperSlide key={index}>
-            <HighlightCard {...card} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="overflow-x-hidden pb-1 pt-4">
+        <Swiper
+          className="max-w-[588px] !overflow-visible !px-6"
+          width={containerWidth}
+          slidesPerView={1}
+          slidesPerGroup={1}
+          spaceBetween={containerWidth < 588 ? 12 : 32}
+        >
+          {items.map((card, index) => (
+            <SwiperSlide key={index}>
+              <HighlightCard {...card} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </>
   );
 };
