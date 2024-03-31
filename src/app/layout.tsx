@@ -25,7 +25,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body
-        className={`font-sans ${inter.variable} relative text-primary bg-0 `}
+        className={`font-sans ${inter.variable} dark:bg-dot-neutral-600/[0.2] bg-dot-neutral-400/[0.2] relative bg-neutral-50 text-primary dark:bg-neutral-800 `}
       >
         <TRPCReactProvider headers={headers()}>
           <ThemeProvider
