@@ -23,6 +23,7 @@ export default {
         sm: "588px",
       },
       colors: {
+        accent: "#77ACA9", // Selection
         neutral: {
           50: "#fefefe", // (Dark theme) primary text | (Light theme) bg
           100: "#f5f5f5", // (Light theme) card depth 0, display text
@@ -164,6 +165,8 @@ export default {
     }),
   ],
 } satisfies Config;
+
+// Background Grids + Dots
 
 interface ColorPalette {
   [key: string]: string | ColorPalette;
