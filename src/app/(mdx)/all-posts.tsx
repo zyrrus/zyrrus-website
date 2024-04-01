@@ -28,7 +28,6 @@ export default function AllPosts({ originalPosts }: Props) {
           key={props.route}
           {...props}
           className="max-w-[540px] xl:max-w-[420px]"
-          disableFullWidth
         />
       ))}
     </div>
