@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { cn } from "~/app/utils/styles";
+import { cn } from "~/utils/client/styles";
 import {
   isSourceRoute,
   type PostFrontmatter,
   type SourceRoute,
-} from "~/server/utils/mdx/types";
+} from "~/utils/server/mdx/types";
 import { Sheet, SheetContent, SheetTrigger } from "~/app/components/ui/sheet";
 import { Button } from "~/app/components/ui/button";
 import { GoKebabHorizontal } from "react-icons/go";

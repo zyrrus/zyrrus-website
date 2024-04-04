@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
-import { cn } from "~/app/utils/styles";
+import { cn } from "~/utils/client/styles";
 
 interface ScrollbarProps {
   scrollbarsClassname?: string;

@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { BannerImage } from "~/app/components/mdx/banner-image";
-import type { PostFrontmatter } from "~/server/utils/mdx/types";
+import type { PostFrontmatter } from "~/utils/server/mdx/types";
 import { BadgeList } from "~/app/components/mdx/badge-list";
 
 interface Props {

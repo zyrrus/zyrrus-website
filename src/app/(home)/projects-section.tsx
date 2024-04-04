@@ -1,6 +1,6 @@
 import { GoCommandPalette } from "react-icons/go";
 import { HighlightCardRow } from "~/app/components/highlight-card-row";
-import { getAllPostsMeta } from "~/server/utils/mdx/mdx";
+import { getAllPostsMeta } from "~/utils/server/mdx/mdx";
 
 export default async function Projects() {
   const projects = await getAllPostsMeta("projects");

@@ -1,4 +1,4 @@
-import type { PostFrontmatter, SourceRoute } from "~/server/utils/mdx/types";
+import type { PostFrontmatter, SourceRoute } from "~/utils/server/mdx/types";
 import type { CardMatter } from "~/app/(mdx)/filters";
 import { GoCommandPalette, GoPencil } from "react-icons/go";
 

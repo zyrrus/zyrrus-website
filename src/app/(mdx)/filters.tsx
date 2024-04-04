@@ -15,7 +15,7 @@ import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu";
 import { useState } from "react";
 import { type HighlightCardProps } from "~/app/components/highlight-card";
 import useFilters from "~/app/hooks/useFilters";
-import { type PostFrontmatter } from "~/server/utils/mdx/types";
+import { type PostFrontmatter } from "~/utils/server/mdx/types";
 
 export type CardMatter = HighlightCardProps &
   PostFrontmatter & { slug: string };

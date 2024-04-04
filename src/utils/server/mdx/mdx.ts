@@ -4,7 +4,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import {
   type PostFrontmatter,
   type SourceRoute,
-} from "~/server/utils/mdx/types";
+} from "~/utils/server/mdx/types";
 
 const rootDir = path.join(process.cwd(), "src", "app", "(mdx)");
 const getSourceDir = (source: SourceRoute) =>
