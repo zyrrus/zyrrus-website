@@ -1,12 +1,12 @@
-import type { PostFrontmatter, SourceRoute } from "~/utils/server/mdx/types";
-import type { CardMatter } from "~/app/(mdx)/filters";
-import { GoCommandPalette, GoPencil } from "react-icons/go";
+import type { PostFrontmatter } from "~/utils/server/mdx/types";
+import type { CardMatter } from "~/app/components/mdx/filters";
+import { GoPencil } from "react-icons/go";
 
 export const projectToCardMatter =
-  (source: SourceRoute) =>
+  () =>
   (project: PostFrontmatter & { slug: string }): CardMatter => ({
     ...project,
-    route: `/${source}/${project.slug}`,
+    route: `/writing/${project.slug}`,
     image: project.image ?? `https://picsum.photos/540/240/`,
-    icon: source === "projects" ? <GoCommandPalette /> : <GoPencil />,
+    icon: <GoPencil />,
   });

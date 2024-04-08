@@ -7,7 +7,7 @@ import {
   radius,
   rotation,
   orchestrateCells,
-} from "~/app/(home)/hero-graphic-generation";
+} from "~/app/(home)/_sections/hero-graphic-generation";
 
 const HeroGraphic: React.FC = () => {
   const points = useMemo(orchestrateCells, []);

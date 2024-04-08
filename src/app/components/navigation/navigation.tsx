@@ -69,14 +69,14 @@ const links: {
     href: "/about",
     icon: GoPerson,
   },
+  //   {
+  //     tooltip: "Projects",
+  //     href: "/projects",
+  //     icon: GoCommandPalette,
+  //   },
   {
-    tooltip: "Projects",
-    href: "/projects",
-    icon: GoCommandPalette,
-  },
-  {
-    tooltip: "Articles",
-    href: "/articles",
+    tooltip: "Writing",
+    href: "/writing",
     icon: GoPencil,
   },
 ];

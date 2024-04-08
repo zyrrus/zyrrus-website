@@ -1,19 +1,15 @@
 import { type PropsWithChildren } from "react";
-import MdxHeader from "~/app/(mdx)/mdx-header";
+import MdxHeader from "~/app/components/mdx/mdx-header";
 import { MainContainer } from "~/app/components/mdx/main-container";
 import { PostsPanel } from "~/app/components/navigation/posts-panel";
 import { getAllPostsMeta } from "~/utils/server/mdx/mdx";
-import { type SourceRoute } from "~/utils/server/mdx/types";
 
-export default async function MdxLayout({
-  children,
-  source,
-}: PropsWithChildren<{ source: SourceRoute }>) {
-  const posts = await getAllPostsMeta(source);
+export default async function MdxLayout({ children }: PropsWithChildren) {
+  const posts = await getAllPostsMeta();
 
   return (
     <>
-      <PostsPanel source={source} posts={posts} />
+      <PostsPanel posts={posts} />
       <MainContainer>
         <MdxHeader posts={posts} />
         {children}

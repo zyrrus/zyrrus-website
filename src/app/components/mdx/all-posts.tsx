@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Filters, { type CardMatter } from "~/app/(mdx)/filters";
+import Filters, { type CardMatter } from "~/app/components/mdx/filters";
 import { HighlightCard } from "~/app/components/highlight-card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 

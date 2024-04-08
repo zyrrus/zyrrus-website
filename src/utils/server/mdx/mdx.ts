@@ -1,14 +1,9 @@
 import fs, { type Dirent } from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
-import {
-  type PostFrontmatter,
-  type SourceRoute,
-} from "~/utils/server/mdx/types";
+import { type PostFrontmatter } from "~/utils/server/mdx/types";
 
-const rootDir = path.join(process.cwd(), "src", "app", "(mdx)");
-const getSourceDir = (source: SourceRoute) =>
-  path.join(rootDir, source, "(posts)");
+const rootDir = path.join(process.cwd(), "src", "app", "writing", "(posts)");
 
 const isValidMdxPage = (dirent: Dirent) => {
   const { name: fileName, path: filePath } = dirent;
@@ -22,11 +17,11 @@ const isValidMdxPage = (dirent: Dirent) => {
   );
 };
 
-const getAllFiles = async (
-  source: SourceRoute,
-): Promise<(PostFrontmatter & { slug: string })[]> => {
+const getAllFiles = async (): Promise<
+  (PostFrontmatter & { slug: string })[]
+> => {
   const files = fs
-    .readdirSync(getSourceDir(source), {
+    .readdirSync(rootDir, {
       withFileTypes: true,
     })
     .filter((dirent) => dirent.isDirectory())
@@ -34,7 +29,7 @@ const getAllFiles = async (
 
   const posts = await Promise.all(
     files.map(async (dirent) => {
-      const { meta } = await getPostMetaBySlug(dirent.name, source);
+      const { meta } = await getPostMetaBySlug(dirent.name);
       return meta;
     }),
   );
@@ -44,17 +39,17 @@ const getAllFiles = async (
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
-export const getFirstPostMetaBySource = async (source: SourceRoute) => {
-  const posts = await getAllFiles(source);
+export const getFirstPostMetaBySource = async () => {
+  const posts = await getAllFiles();
 
   if (posts[0] !== undefined) {
     return posts[0];
   }
 };
 
-export const getPostMetaBySlug = async (slug: string, source: SourceRoute) => {
+export const getPostMetaBySlug = async (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, "");
-  const filePath = path.join(getSourceDir(source), realSlug, "page.mdx");
+  const filePath = path.join(rootDir, realSlug, "page.mdx");
 
   const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
 
@@ -66,8 +61,8 @@ export const getPostMetaBySlug = async (slug: string, source: SourceRoute) => {
   return { meta: { ...frontmatter, slug: realSlug }, content };
 };
 
-export const getAllPostsMeta = async (source: SourceRoute) => {
-  const posts = await getAllFiles(source);
+export const getAllPostsMeta = async () => {
+  const posts = await getAllFiles();
 
   return posts;
 };
