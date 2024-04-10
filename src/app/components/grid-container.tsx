@@ -15,7 +15,7 @@ export default function GridContainer({ originalItems }: Props) {
   return (
     <div
       ref={animationParent}
-      className="mx-auto grid grid-cols-1 gap-10 px-6 lg:grid-cols-2 2xl:grid-cols-3"
+      className="grid grid-cols-1 gap-10 lg:grid-cols-2 2xl:grid-cols-3"
     >
       <Filters
         filterNames={originalItems.flatMap((p) => p.tags)}

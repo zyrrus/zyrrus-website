@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { Card } from "~/app/components/card";
-import { BadgeList } from "~/app/components/mdx/badge-list";
 import { Badge } from "~/app/components/ui/badge";
 import { cn } from "~/utils/client/styles";
 

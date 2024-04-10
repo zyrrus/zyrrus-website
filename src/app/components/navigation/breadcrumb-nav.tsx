@@ -18,7 +18,7 @@ export const BreadcrumbNav = ({ routes, page }: BreadcrumbNavProps) => {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">
+          <BreadcrumbLink href="/" className="hover:animate-pulse">
             <Image
               src="/rainbow-ring.png"
               alt="Home"
