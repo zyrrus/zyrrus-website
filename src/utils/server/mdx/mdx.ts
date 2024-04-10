@@ -3,7 +3,7 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { type PostFrontmatter } from "~/utils/server/mdx/types";
 
-const rootDir = path.join(process.cwd(), "src", "app", "writing", "(posts)");
+const rootDir = path.join(process.cwd(), "src", "app", "(home)", "writing", "(posts)");
 
 const isValidMdxPage = (dirent: Dirent) => {
   const { name: fileName, path: filePath } = dirent;
