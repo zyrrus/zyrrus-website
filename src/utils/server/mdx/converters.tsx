@@ -1,6 +1,9 @@
 import type { PostFrontmatter } from "~/utils/server/mdx/types";
-import type { CardMatter } from "~/app/components/mdx/filters";
 import { GoPencil } from "react-icons/go";
+import type { HighlightCardProps } from "~/app/components/highlight-card";
+
+export type CardMatter = HighlightCardProps &
+  PostFrontmatter & { slug: string };
 
 export const projectToCardMatter =
   () =>

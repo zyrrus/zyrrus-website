@@ -13,79 +13,77 @@ import {
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu";
 import { useState } from "react";
-import { type HighlightCardProps } from "~/app/components/highlight-card";
 import useFilters from "~/app/hooks/useFilters";
-import { type PostFrontmatter } from "~/utils/server/mdx/types";
-
-export type CardMatter = HighlightCardProps &
-  PostFrontmatter & { slug: string };
 
 type SortOption = "title-asc" | "title-desc" | "latest" | "oldest";
-const sortOptions: { value: SortOption; children: string }[] = [
+const SORT_OPTIONS: { value: SortOption; children: string }[] = [
   { value: "latest", children: "Date (Latest)" },
   { value: "oldest", children: "Date (Oldest)" },
   { value: "title-asc", children: "Title (A-Z)" },
   { value: "title-desc", children: "Title (Z-A)" },
 ];
 
-interface Props {
-  originalPosts: CardMatter[];
-  posts: CardMatter[];
-  setPosts: (value: CardMatter[]) => void;
+interface Props<T extends { title: string; date: string }> {
+  filterNames: string[];
+  originalItems: T[];
+  items: T[];
+  setItems: (value: T[]) => void;
 }
 
-export default function Filters({ originalPosts, posts, setPosts }: Props) {
+export default function Filters<T extends { title: string; date: string }>({
+  filterNames,
+  originalItems,
+  items,
+  setItems,
+}: Props<T>) {
   const [animationParent] = useAutoAnimate();
 
-  const { filters, handleResetFilters, handleToggleFilter } = useFilters(
-    posts.flatMap((p) => p.tags ?? []),
-  );
+  const [sortMethod, setSortMethod] = useState<SortOption>("latest");
+  const { filters, handleResetFilters, handleToggleFilter } =
+    useFilters(filterNames);
 
   const handleFilter = (index: number) => {
     handleToggleFilter(index);
 
-    const filterResults = posts.filter(
-      (post) =>
-        post.tags &&
-        post.tags.some((tag) =>
-          filters.some((filter) => filter.isActive && filter.name === tag),
-        ),
+    const activeFilters = filters
+      .filter((filter) => filter.isActive)
+      .map(({ name }) => name);
+    const filterResults = originalItems.filter((item) =>
+      activeFilters.includes(item.title),
     );
 
-    setPosts(filterResults.length > 0 ? filterResults : originalPosts);
+    setItems(filterResults.length > 0 ? filterResults : originalItems);
   };
 
   const handleReset = () => {
     handleResetFilters();
-    setPosts(originalPosts);
+    setItems(originalItems);
   };
-
-  const [sortMethod, setSortMethod] = useState<SortOption>("latest");
 
   const handleSortMethodChanged = (value: string) => {
     const method = value as SortOption;
     setSortMethod(method);
 
-    const newPosts = [...posts];
+    const newItems = [...items];
     switch (method) {
       case "latest":
-        newPosts.sort(
+        newItems.sort(
           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
         );
         break;
       case "oldest":
-        newPosts.sort(
+        newItems.sort(
           (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
         );
         break;
       case "title-asc":
-        newPosts.sort((a, b) => a.title.localeCompare(b.title));
+        newItems.sort((a, b) => a.title.localeCompare(b.title));
         break;
       case "title-desc":
-        newPosts.sort((a, b) => b.title.localeCompare(a.title));
+        newItems.sort((a, b) => b.title.localeCompare(a.title));
         break;
     }
-    setPosts(newPosts);
+    setItems(newItems);
   };
 
   return (
@@ -105,7 +103,7 @@ export default function Filters({ originalPosts, posts, setPosts }: Props) {
               value={sortMethod}
               onValueChange={handleSortMethodChanged}
             >
-              {sortOptions.map((props) => (
+              {SORT_OPTIONS.map((props) => (
                 <DropdownMenuRadioItem key={props.value} {...props} />
               ))}
             </DropdownMenuRadioGroup>

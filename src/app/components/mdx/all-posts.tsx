@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Filters, { type CardMatter } from "~/app/components/mdx/filters";
+import Filters from "~/app/components/filters";
 import { HighlightCard } from "~/app/components/highlight-card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import type { CardMatter } from "~/utils/server/mdx/converters";
 
 interface Props {
   originalPosts: CardMatter[];
@@ -19,9 +20,10 @@ export default function AllPosts({ originalPosts }: Props) {
       className="mx-auto grid grid-cols-1 gap-10 px-6 lg:grid-cols-2 2xl:grid-cols-3"
     >
       <Filters
-        originalPosts={originalPosts}
-        posts={posts}
-        setPosts={setPosts}
+        filterNames={originalPosts.flatMap((p) => p.tags ?? [])}
+        originalItems={originalPosts}
+        items={posts}
+        setItems={setPosts}
       />
       {posts.map((props) => (
         <HighlightCard
