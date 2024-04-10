@@ -55,6 +55,9 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      transitionDuration: {
+        "2000": "2000ms",
+      },
       boxShadow: {
         "cutout-depth-0": "0px 25px 15px 0px rgba(0, 0, 0, 0.25) inset",
         "cutout-depth-1":

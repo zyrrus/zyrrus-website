@@ -1,9 +1,9 @@
 import { BreadcrumbNav } from "~/app/components/navigation/breadcrumb-nav";
 
-export default function Tools() {
+export default function Resources() {
   return (
     <main className="p-24">
-      <BreadcrumbNav page="Tools" />
+      <BreadcrumbNav page="Resources" />
     </main>
   );
 }

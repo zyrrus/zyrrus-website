@@ -3,7 +3,7 @@
 import * as Separator from "@radix-ui/react-separator";
 import { cva } from "class-variance-authority";
 import Link from "next/link";
-import { GoHome, GoPerson, GoCommandPalette, GoPencil } from "react-icons/go";
+import { GoHome, GoPerson, GoPencil, GoBook, GoTerminal } from "react-icons/go";
 import {
   Tooltip,
   TooltipContent,
@@ -69,11 +69,16 @@ const links: {
     href: "/about",
     icon: GoPerson,
   },
-  //   {
-  //     tooltip: "Projects",
-  //     href: "/projects",
-  //     icon: GoCommandPalette,
-  //   },
+  {
+    tooltip: "Resources",
+    href: "/resources",
+    icon: GoBook,
+  },
+  {
+    tooltip: "Tools",
+    href: "/tools",
+    icon: GoTerminal,
+  },
   {
     tooltip: "Writing",
     href: "/writing",
