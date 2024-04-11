@@ -26,9 +26,9 @@ export default {
         accent: "#77ACA9", // Selection
         neutral: {
           50: "#fefefe", // (Dark theme) primary text | (Light theme) bg
-          100: "#f5f5f5", // (Light theme) card depth 0, display text
-          150: "#ededed", // (Light theme) display text
-          200: "#e5e5e5", // (Light theme) borders, card depth 1, code bg
+          100: "#f8f8f8", // (Light theme) card depth 0, display text
+          150: "#f4f4f4", // (Light theme) display text, card depth 1,
+          200: "#e5e5e5", // (Light theme) borders, code bg
           300: "#d4d4d4", // (Dark theme) code text
           400: "#a3a3a3", // (Dark theme) secondary text, icons
           500: "#737373",
@@ -36,9 +36,29 @@ export default {
           700: "#404040", // (Dark theme) borders, display text (25%) | (Light theme) code text
           750: "#333333", // (Dark theme) card highlight
           800: "#262626", // (Light theme) primary button fill | (Dark theme) bg
-          850: "#212121", // (Dark theme) card depth 0
-          900: "#171717", // (Dark theme) card depth 1 | (Light theme) primary text
+          850: "#222222", // (Dark theme) card depth 0
+          900: "#202020", // (Dark theme) card depth 1 | (Light theme) primary text
           950: "#131313", // (Dark theme) code bg
+        },
+        "gruv-red": {
+          fg: "#88403c",
+          bg: "#EA6962",
+        },
+        "gruv-orange": {
+          fg: "#855231",
+          bg: "#E78A4E",
+        },
+        "gruv-yellow": {
+          fg: "#795F34",
+          bg: "#D8A657",
+        },
+        "gruv-green": {
+          fg: "#585E36",
+          bg: "#A9B665",
+        },
+        "gruv-blue": {
+          fg: "#405852",
+          bg: "#7DAEA3",
         },
       },
       keyframes: {
@@ -59,9 +79,9 @@ export default {
         "2000": "2000ms",
       },
       boxShadow: {
-        "cutout-depth-0": "0px 25px 15px 0px rgba(0, 0, 0, 0.25) inset",
+        "cutout-depth-0": "0px 25px 15px 0px rgba(0, 0, 0, 0.15) inset",
         "cutout-depth-1":
-          "0px 25px 15px 0px rgba(0, 0, 0, 0.25) inset, 0px 48px 15px 0px rgba(0, 0, 0, 0.15) inset",
+          "0px 25px 15px 0px rgba(0, 0, 0, 0.15) inset, 0px 48px 15px 0px rgba(0, 0, 0, 0.05) inset",
       },
       transitionTimingFunction: {
         "bounce-up": "cubic-bezier(0.5, 2.5, 0.7, 0.7)",
@@ -123,7 +143,7 @@ export default {
           "@apply dark:text-neutral-50": {},
         },
         ".text-secondary": {
-          color: theme("colors.neutral.600"),
+          color: theme("colors.neutral.500"),
           "@apply dark:text-neutral-400": {},
         },
         // Background elevation surface (0 is base, 1 is card, ...)
@@ -136,7 +156,7 @@ export default {
           "@apply dark:bg-neutral-850": {},
         },
         ".bg-2": {
-          backgroundColor: theme("colors.neutral.200"),
+          backgroundColor: theme("colors.neutral.150"),
           "@apply dark:bg-neutral-900": {},
         },
       });

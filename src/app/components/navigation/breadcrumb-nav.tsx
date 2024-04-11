@@ -11,11 +11,16 @@ import {
 interface BreadcrumbNavProps {
   routes?: { label: string; href: string }[];
   page: string;
+  className?: string;
 }
 
-export const BreadcrumbNav = ({ routes, page }: BreadcrumbNavProps) => {
+export const BreadcrumbNav = ({
+  routes,
+  page,
+  className,
+}: BreadcrumbNavProps) => {
   return (
-    <Breadcrumb>
+    <Breadcrumb className={className}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/" className="hover:animate-pulse">
@@ -24,7 +29,7 @@ export const BreadcrumbNav = ({ routes, page }: BreadcrumbNavProps) => {
               alt="Home"
               width={24}
               height={24}
-              className="motion-safe:duration-2000 motion-safe:animate-spin"
+              className="motion-safe:animate-spin motion-safe:duration-2000"
             />
           </BreadcrumbLink>
         </BreadcrumbItem>

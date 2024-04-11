@@ -23,14 +23,20 @@ const SORT_OPTIONS: { value: SortOption; children: string }[] = [
   { value: "title-desc", children: "Title (Z-A)" },
 ];
 
-interface Props<T extends { title: string; date: string }> {
+export type Filterable = {
+  title: string;
+  date: string;
+  tags?: string[];
+};
+
+interface Props<T extends Filterable> {
   filterNames: string[];
   originalItems: T[];
   items: T[];
   setItems: (value: T[]) => void;
 }
 
-export default function Filters<T extends { title: string; date: string }>({
+export default function Filters<T extends Filterable>({
   filterNames,
   originalItems,
   items,
@@ -48,9 +54,15 @@ export default function Filters<T extends { title: string; date: string }>({
     const activeFilters = filters
       .filter((filter) => filter.isActive)
       .map(({ name }) => name);
-    const filterResults = originalItems.filter((item) =>
-      activeFilters.includes(item.title),
+    const filterResults = originalItems.filter(
+      (item) =>
+        item.tags && item.tags.some((tag) => activeFilters.includes(tag)),
     );
+
+    console.log("FILTERS:", filters);
+    console.log("ACTIVE FITLERS:", activeFilters);
+    console.log("ORIGINAL ITEMS:", originalItems);
+    console.log("FILTER RESULTS:", filterResults);
 
     setItems(filterResults.length > 0 ? filterResults : originalItems);
   };
