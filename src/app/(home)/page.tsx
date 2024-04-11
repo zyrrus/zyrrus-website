@@ -6,7 +6,6 @@ import { HeroGraphic } from "~/app/(home)/_sections/hero-graphic";
 export default function Home() {
   return (
     <main className="flex flex-col gap-y-52 pb-24 pt-72">
-      {/* <RingBackground /> */}
       <HeroGraphic />
       <Hero />
       <About />
