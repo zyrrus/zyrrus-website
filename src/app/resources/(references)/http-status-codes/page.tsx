@@ -139,15 +139,13 @@ export default function HttpStatusCodes() {
   );
 }
 
-interface StatusCode {
-  code: string;
-  message: string;
-}
-
 interface StatusCodeGroupProps {
   title: string;
   code: string;
-  items: StatusCode[];
+  items: {
+    code: string;
+    message: string;
+  }[];
   colorBgBg: string;
   colorTextFg: string;
   colorDarkTextBg: string;
