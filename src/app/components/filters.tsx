@@ -130,11 +130,12 @@ export default function Filters<T extends Filterable>({
         {filters.map(({ name, isActive }, index) => (
           <li key={name}>
             <Button
+              className={isActive ? "gap-x-2.5 pl-2.5" : ""}
               variant={isActive ? "default" : "outline"}
               size="sm"
               onClick={() => handleFilter(index)}
             >
-              {isActive && <GoCheck />}
+              {isActive && <GoCheck className="h-4 w-4" />}
               {name}
             </Button>
           </li>
