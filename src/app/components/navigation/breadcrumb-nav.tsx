@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -35,12 +36,12 @@ export const BreadcrumbNav = ({
         </BreadcrumbItem>
 
         {routes?.map(({ label, href }) => (
-          <>
+          <React.Fragment key={label}>
             <BreadcrumbSeparator>/</BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink href={href}>{label}</BreadcrumbLink>
             </BreadcrumbItem>
-          </>
+          </React.Fragment>
         ))}
 
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
