@@ -166,268 +166,100 @@ export default function Page() {
   };
 
   // TODO: Remove
+  //   const [currentHour, setCurrentHour] = useState(0);
   const [currentHour, setCurrentHour] = useState(timeToDecimal(new Date()));
-  const circleClamp = (min: number, value: number, max: number) => {
-    const range = max - min + 1;
 
-    let newValue = value;
-    if (newValue < min) {
-      newValue += range;
-    } else if (newValue > max) {
-      newValue -= range;
-    }
-
-    return newValue;
-  };
   const handleUpdateHour = (delta: -1 | 1) => {
     setCurrentHour((prev) => {
-      return circleClamp(-11, prev + delta, 12);
+      return circleClamp(-12, prev + delta, 11);
     });
   };
 
+  const timeClamp = (value: number) => circleClamp(-12, value, 11);
+
   return (
-    <div className="mx-auto mt-10 max-w-7xl px-6">
-      <BreadcrumbNav
-        routes={[{ label: "Resources", href: "/resources" }]}
-        page="Time Zone Visualization"
-        className=""
-      />
+    <>
+      <div className="mx-auto mt-10 max-w-7xl px-6">
+        <BreadcrumbNav
+          routes={[{ label: "Resources", href: "/resources" }]}
+          page="Time Zone Visualization"
+          className=""
+        />
+      </div>
       <main className="my-20">
-        <h1 className="text-2xl font-semibold">Time Zone</h1>
-        <p className="mt-2 text-xl text-secondary">
-          A simple tool to visualize differences between time zones.
-        </p>
-        <div className="mt-8">
-          <h2 className="mb-4 text-xl font-semibold">Select Time Zones</h2>
-          <MultiSelect
-            options={TIME_ZONE_OPTIONS}
-            selected={selectedTimeZones}
-            onSelectToggle={handleToggleTimeZone}
-            label={
-              selectedTimeZones.length > 0
-                ? `${selectedTimeZones.length} time zone${
-                    selectedTimeZones.length > 1 ? "s" : ""
-                  } selected`
-                : "Select time zones..."
-            }
-            placeholder="Select time zones..."
-            emptyResult="No time zone found."
+        <div className="mx-auto max-w-7xl px-6">
+          <h1 className="text-2xl font-semibold">Time Zone</h1>
+          <p className="mt-2 text-xl text-secondary">
+            A simple tool to visualize differences between time zones.
+          </p>
+          <div className="mt-8">
+            <h2 className="mb-4 text-xl font-semibold">Select Time Zones</h2>
+            <MultiSelect
+              options={TIME_ZONE_OPTIONS}
+              selected={selectedTimeZones}
+              onSelectToggle={handleToggleTimeZone}
+              label={
+                selectedTimeZones.length > 0
+                  ? `${selectedTimeZones.length} time zone${
+                      selectedTimeZones.length > 1 ? "s" : ""
+                    } selected`
+                  : "Select time zones..."
+              }
+              placeholder="Select time zones..."
+              emptyResult="No time zone found."
+            />
+          </div>
+          <div className="mt-4 flex flex-row gap-x-2">
+            <p className="font-semibold">Selected:</p>
+            {selectedTimeZones.map((timeZone) => (
+              <Badge
+                key={timeZone.value}
+                className="cursor-pointer gap-x-1 pr-1 "
+                onClick={() => handleToggleTimeZone(timeZone)}
+              >
+                {timeZone.label} ({timeZone.group})
+                <X className="h-3 w-3" />
+              </Badge>
+            ))}
+          </div>
+          <input
+            type="number"
+            value={currentHour}
+            onChange={(e) => setCurrentHour(timeClamp(+e.target.value))}
           />
-        </div>
-        <div className="mt-4 flex flex-row gap-x-2">
-          <p className="font-semibold">Selected:</p>
-          {selectedTimeZones.map((timeZone) => (
-            <Badge
-              key={timeZone.value}
-              className="cursor-pointer gap-x-1 pr-1 "
-              onClick={() => handleToggleTimeZone(timeZone)}
-            >
-              {timeZone.label} ({timeZone.group})
-              <X className="h-3 w-3" />
-            </Badge>
-          ))}
+
+          <table className="mt-8 w-[300%] table-auto">
+            <thead>
+              <tr className="text-left">
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="w-full translate-x-[50%]">
+                <td>Item 1</td>
+                <td>Item 2</td>
+                <td>Item 3</td>
+              </tr>
+              <tr>
+                <td>Item 4</td>
+                <td>Item 5</td>
+                <td>Item 6</td>
+              </tr>
+              <tr>
+                <td>Item 7</td>
+                <td>Item 8</td>
+                <td>Item 9</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <ul>
-          <li>
-            Now -{">"} {circleClamp(-11, timeToDecimal(new Date()), 12)}
-          </li>
-          <li>
-            12:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T00:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            01:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T01:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            02:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T02:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            03:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T03:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            04:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T04:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            05:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T05:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            06:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T06:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            07:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T07:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            08:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T08:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            09:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T09:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            10:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T10:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            11:00 AM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T11:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            12:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T12:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            01:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T13:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            02:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T14:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            03:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T15:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            04:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T16:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            05:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T17:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            06:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T18:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            07:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T19:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            08:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T20:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            09:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T21:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            10:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T22:00:00")),
-              12,
-            )}
-          </li>
-          <li>
-            11:00 PM -{">"}{" "}
-            {circleClamp(
-              -11,
-              timeToDecimal(new Date("2024-01-01T23:00:00")),
-              12,
-            )}
-          </li>
-        </ul>
-
-        <div className="relative mt-10 w-[300%]">
-          <TimeZoneMarkers currentHour={currentHour - 1} />
+        {/* TODO: Modify the X Transforms so that this is possible */}
+        {/* <div className="overflow-auto"> */}
+        <div className="relative mt-10 w-[300%] ">
+          <TimeZoneMarkers currentHour={currentHour} />
           {selectedTimeZones.map(({ value, offset }) => {
             return (
               offset !== undefined && (
@@ -441,13 +273,15 @@ export default function Page() {
           })}
           <div className="absolute bottom-0 left-[calc(1/6*100%)] top-0 w-1 bg-red-500" />
         </div>
+        {/* </div> */}
       </main>
-    </div>
+    </>
   );
 }
 
 const TimeZoneMarkers = ({ currentHour }: { currentHour: number }) => {
   const times = [
+    "00",
     "01",
     "02",
     "03",
@@ -460,6 +294,17 @@ const TimeZoneMarkers = ({ currentHour }: { currentHour: number }) => {
     "10",
     "11",
     "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
   ];
 
   return (
@@ -469,7 +314,7 @@ const TimeZoneMarkers = ({ currentHour }: { currentHour: number }) => {
         transform: `translateX(${currentHour * X_OFFSET}%)`,
       }}
     >
-      <div className="flex h-8 flex-1 translate-x-[-200%] flex-row">
+      <div className="flex h-8 flex-1 translate-x-[-100%] flex-row">
         {times.map((value, index) => (
           <div key={index} className="relative flex-1 bg-slate-300">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -478,16 +323,8 @@ const TimeZoneMarkers = ({ currentHour }: { currentHour: number }) => {
           </div>
         ))}
       </div>
-      <div className="flex h-8 flex-1 translate-x-[-200%] flex-row">
-        {times.map((value, index) => (
-          <div key={index} className="relative flex-1 bg-slate-300">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              {value}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex h-8 flex-1 translate-x-[-200%] flex-row">
+
+      <div className="flex h-8 flex-1 translate-x-[-100%] flex-row">
         {times.map((value, index) => (
           <div key={index} className="relative flex-1 bg-slate-500">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -496,25 +333,8 @@ const TimeZoneMarkers = ({ currentHour }: { currentHour: number }) => {
           </div>
         ))}
       </div>
-      <div className="flex h-8 flex-1 translate-x-[-200%] flex-row">
-        {times.map((value, index) => (
-          <div key={index} className="relative flex-1 bg-slate-500">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              {value}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex h-8 flex-1 translate-x-[-200%] flex-row">
-        {times.map((value, index) => (
-          <div key={index} className="relative flex-1 bg-slate-800">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              {value}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex h-8 flex-1 translate-x-[-200%] flex-row">
+
+      <div className="flex h-8 flex-1 translate-x-[-100%] flex-row">
         {times.map((value, index) => (
           <div key={index} className="relative flex-1 bg-slate-800">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -542,23 +362,14 @@ const TimeZone = ({
         transform: `translateX(${(currentHour + utcOffset) * X_OFFSET}%)`,
       }}
     >
-      <div className="h-8 flex-1 translate-x-[-200%] rounded-md bg-indigo-300">
-        {utcLabel}
+      <div className="h-8 flex-1 translate-x-[-100%] rounded-md bg-indigo-300">
+        {utcLabel} (Yesterday)
       </div>
-      <div className="h-8 flex-1 translate-x-[-200%] rounded-md bg-indigo-300">
-        {utcLabel}
+      <div className="h-8 flex-1 translate-x-[-100%] rounded-md bg-indigo-500">
+        {utcLabel} (Today)
       </div>
-      <div className="h-8 flex-1 translate-x-[-200%] rounded-md bg-indigo-500">
-        {utcLabel}
-      </div>
-      <div className="h-8 flex-1 translate-x-[-200%] rounded-md bg-indigo-500">
-        {utcLabel}
-      </div>
-      <div className="h-8 flex-1 translate-x-[-200%] rounded-md bg-indigo-800">
-        {utcLabel}
-      </div>
-      <div className="h-8 flex-1 translate-x-[-200%] rounded-md bg-indigo-800">
-        {utcLabel}
+      <div className="h-8 flex-1 translate-x-[-100%] rounded-md bg-indigo-800">
+        {utcLabel} (Tomorrow)
       </div>
     </div>
   );
@@ -588,4 +399,17 @@ const useLocalTimeZone = (updateSelection: (option: Option) => void) => {
 
     if (item) updateSelection(item);
   }, []);
+};
+
+const circleClamp = (min: number, value: number, max: number) => {
+  const range = max - min + 1;
+
+  let newValue = value;
+  if (newValue < min) {
+    newValue += range;
+  } else if (newValue > max) {
+    newValue -= range;
+  }
+
+  return newValue;
 };
