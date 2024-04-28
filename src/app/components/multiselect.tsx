@@ -108,7 +108,7 @@ const groupItems = (items: MultiSelectItem[]) => {
       groups[group] = [];
     }
 
-    groups[group].push(item);
+    groups[group]!.push(item);
   });
 
   return groups;
