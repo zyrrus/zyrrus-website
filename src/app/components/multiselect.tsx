@@ -31,6 +31,7 @@ export interface MultiSelectProps {
   label?: string;
   placeholder?: string;
   emptyResult?: React.ReactNode;
+  buttonClassName?: string;
 }
 
 export function MultiSelect({
@@ -40,6 +41,7 @@ export function MultiSelect({
   label,
   placeholder,
   emptyResult,
+  buttonClassName,
 }: MultiSelectProps) {
   const [open, setOpen] = React.useState(false);
 
@@ -52,13 +54,13 @@ export function MultiSelect({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[250px] justify-between"
+          className={cn("w-[250px] justify-between", buttonClassName)}
         >
           {label}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[250px] p-0">
+      <PopoverContent align="start" className="w-[250px] p-0">
         <Command>
           <CommandInput placeholder={placeholder} />
           <CommandEmpty>{emptyResult}</CommandEmpty>
@@ -73,7 +75,7 @@ export function MultiSelect({
                       value={item.value}
                       onSelect={() => {
                         onSelectToggle?.(item);
-                        setOpen(false);
+                        // setOpen(false);
                       }}
                     >
                       <Check
