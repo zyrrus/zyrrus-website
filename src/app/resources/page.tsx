@@ -19,41 +19,48 @@ export default function Resources() {
               route: "/resources/http-status-codes",
             },
             {
-              title: "Tailwind Cheat Sheet",
-              date: "4/10/2024",
-              tags: ["Reference", "Web", "Tailwind", "Cheat Sheet"],
-              route: "/resources/",
+              title: "Timezone Visualization",
+              date: "4/27/2024",
+              tags: ["Tool", "Visualization"],
+              route: "/resources/timezone",
             },
-            {
-              title: "What is a monad?",
-              date: "4/10/2024",
-              tags: ["Reference", "Functional Programming", "Design Patterns"],
-              route: "/resources/",
-            },
-            {
-              title: "Markdown Cheat Sheet",
-              date: "4/10/2024",
-              tags: ["Reference", "Web", "Cheat Sheet"],
-              route: "/resources/",
-            },
-            {
-              title: "Metadata Remover",
-              date: "4/10/2024",
-              tags: ["Tool"],
-              route: "/resources/",
-            },
-            {
-              title: "Typing Game",
-              date: "4/10/2024",
-              tags: ["Tool", "Game"],
-              route: "/resources/",
-            },
-            {
-              title: "Design Patterns",
-              date: "4/10/2024",
-              tags: ["Reference", "Design Patterns"],
-              route: "/resources/",
-            },
+
+            // {
+            //   title: "Tailwind Cheat Sheet",
+            //   date: "4/10/2024",
+            //   tags: ["Reference", "Web", "Tailwind", "Cheat Sheet"],
+            //   route: "/resources/",
+            // },
+            // {
+            //   title: "What is a monad?",
+            //   date: "4/10/2024",
+            //   tags: ["Reference", "Functional Programming", "Design Patterns"],
+            //   route: "/resources/",
+            // },
+            // {
+            //   title: "Markdown Cheat Sheet",
+            //   date: "4/10/2024",
+            //   tags: ["Reference", "Web", "Cheat Sheet"],
+            //   route: "/resources/",
+            // },
+            // {
+            //   title: "Metadata Remover",
+            //   date: "4/10/2024",
+            //   tags: ["Tool"],
+            //   route: "/resources/",
+            // },
+            // {
+            //   title: "Typing Game",
+            //   date: "4/10/2024",
+            //   tags: ["Tool", "Game"],
+            //   route: "/resources/",
+            // },
+            // {
+            //   title: "Design Patterns",
+            //   date: "4/10/2024",
+            //   tags: ["Reference", "Design Patterns"],
+            //   route: "/resources/",
+            // },
           ]}
         />
       </main>
