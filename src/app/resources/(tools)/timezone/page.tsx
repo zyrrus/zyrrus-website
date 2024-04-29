@@ -300,9 +300,6 @@ const CurrentTimeIndicator = ({
       ? 0
       : (max - min) / 2;
 
-  console.log("Start", startTime, "End", endTime);
-  console.log("Min", min, "Max", max);
-
   return (
     <>
       {min !== undefined && (
