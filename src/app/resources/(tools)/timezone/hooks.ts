@@ -47,12 +47,14 @@ interface TimeSelectFormControls {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export const useTimeSelect = (): {
+export const useTimeSelect = (
+  init = true,
+): {
   timeString: string;
   timeSelectFormControls: TimeSelectFormControls;
 } => {
   const [timeString, setTimeString] = useState(
-    hourDecimalToTime(dateToHourDecimal(new Date())),
+    init ? hourDecimalToTime(dateToHourDecimal(new Date())) : "",
   );
 
   return {
@@ -106,6 +108,7 @@ export const useTimeFormat = () => {
 
   return {
     setIs24HourFormat,
+    is24HourTime,
     times: is24HourTime ? TIMES_24 : TIMES_12,
   };
 };

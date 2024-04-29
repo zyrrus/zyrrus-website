@@ -9,7 +9,10 @@ import { Input } from "~/app/components/ui/input";
 import { Switch } from "~/app/components/ui/switch";
 import { Label } from "~/app/components/ui/label";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { timeToHourDecimal } from "~/app/resources/(tools)/timezone/utils";
+import {
+  hourDecimalToTime,
+  timeToHourDecimal,
+} from "~/app/resources/(tools)/timezone/utils";
 import {
   type Option,
   TIME_ZONE_OPTIONS,
@@ -26,15 +29,22 @@ import { ResourceHeader } from "~/app/components/navigation/resource-header";
  * - [x] replace 100vw with a container
  * - [ ] make the time zone view mobile-friendly
  * - [ ] update the time inputs to adhere to the 12/24-hour format (maybe use react-aria hooks)
- * - [ ] add time range (start + end time inputs)
+ * - [x] add time range (start + end time inputs)
  */
 
 export default function Page() {
-  const { times, setIs24HourFormat } = useTimeFormat();
+  const { times, is24HourTime, setIs24HourFormat } = useTimeFormat();
   const { ref: scrollRef, resetScroll } = useScrollControls();
   const { handleResetTimeZones, handleToggleTimeZone, selectedTimeZones } =
     useTimeZoneMultiSelect();
-  const { timeString, timeSelectFormControls } = useTimeSelect();
+  const {
+    timeString: startTimeString,
+    timeSelectFormControls: startTimeSelectFormControls,
+  } = useTimeSelect();
+  const {
+    timeString: endTimeString,
+    timeSelectFormControls: endTimeSelectFormControls,
+  } = useTimeSelect(false);
 
   return (
     <>
@@ -91,12 +101,28 @@ export default function Page() {
             {/* Column 2 */}
             <div className="">
               <p className="text-lg font-semibold">Select Time</p>
-              <Input
-                className="mt-2"
-                type="time"
-                step="60"
-                {...timeSelectFormControls}
-              />
+
+              <div className="mt-4">
+                <Label htmlFor="start-time-input">Start time</Label>
+                <Input
+                  className="mt-2"
+                  id="start-time-input"
+                  type="time"
+                  step="60"
+                  {...startTimeSelectFormControls}
+                />
+              </div>
+
+              <div className="mt-4">
+                <Label htmlFor="end-time-input">End time</Label>
+                <Input
+                  id="end-time-input"
+                  className="mt-2"
+                  type="time"
+                  step="60"
+                  {...endTimeSelectFormControls}
+                />
+              </div>
 
               {/* Time Format Toggle */}
               <div className="mt-4 flex items-center space-x-2">
@@ -118,8 +144,10 @@ export default function Page() {
         <TimeZoneViewer
           timeZones={selectedTimeZones}
           scrollRef={scrollRef}
-          timeString={timeString}
+          startTimeString={startTimeString}
+          endTimeString={endTimeString}
           times={times}
+          is24HourTime={is24HourTime}
         />
       </main>
     </>
@@ -157,24 +185,36 @@ const SelectedTimeZones = ({
 interface TimeZoneViewerProps {
   timeZones: Option[];
   scrollRef: React.RefObject<HTMLDivElement>;
-  timeString: string;
+  startTimeString: string;
+  endTimeString?: string;
   times: string[];
+  is24HourTime: boolean;
 }
 
 const TimeZoneViewer = ({
   timeZones,
   scrollRef,
-  timeString,
+  startTimeString,
+  endTimeString,
   times,
+  is24HourTime,
 }: TimeZoneViewerProps) => {
   const [animationParent] = useAutoAnimate();
 
+  const transformTimeString = hourDecimalToTime(
+    endTimeString
+      ? (timeToHourDecimal(startTimeString) +
+          timeToHourDecimal(endTimeString)) /
+          2
+      : timeToHourDecimal(startTimeString),
+  );
+
   return (
-    <div ref={scrollRef} className="mt-8 overflow-auto pb-12">
+    <div ref={scrollRef} className="mt-8 overflow-auto pb-12 pt-8">
       <div className="relative w-full max-w-7xl">
         <div
           ref={animationParent}
-          className="grid w-[500%] grid-cols-5 gap-y-4"
+          className="grid w-[500%] grid-cols-5 gap-y-4 pt-1"
         >
           {timeZones.map(({ label, value, group, offset }, index, arr) => {
             return (
@@ -187,7 +227,7 @@ const TimeZoneViewer = ({
                     className="transition-transform"
                     style={{
                       transform: `translateX(calc(${-timeToHourDecimal(
-                        timeString,
+                        transformTimeString,
                         {
                           offset: offset!,
                           isFirst: index === 0,
@@ -197,11 +237,14 @@ const TimeZoneViewer = ({
                     }}
                   >
                     {/* Time Zone Day Label */}
-                    <p>
-                      {day} ({label} - {group})
+                    <p className="font-semibold">
+                      {day}{" "}
+                      <span className="text-sm font-normal text-neutral-500 dark:text-neutral-400">
+                        ({label} - {group})
+                      </span>
                     </p>
                     {/* Time Zone Times */}
-                    <div className="mt-1 flex h-8 flex-row rounded-md bg-neutral-50 dark:bg-neutral-900">
+                    <div className="mt-1 flex h-8 flex-row rounded-md bg-neutral-50/80 dark:bg-neutral-900/80">
                       {times.map((value, index) => (
                         <div
                           key={index}
@@ -220,14 +263,55 @@ const TimeZoneViewer = ({
             );
           })}
         </div>
-        <CurrentTimeIndicator />
+        <CurrentTimeIndicator
+          startTime={timeToHourDecimal(startTimeString)}
+          endTime={endTimeString ? timeToHourDecimal(endTimeString) : undefined}
+          is24HourTime={is24HourTime}
+        />
       </div>
     </div>
   );
 };
 
-const CurrentTimeIndicator = () => {
+const CurrentTimeIndicator = ({
+  startTime,
+  endTime,
+  is24HourTime,
+}: {
+  startTime?: number;
+  endTime?: number;
+  is24HourTime: boolean;
+}) => {
+  // Static values
+  const containerWidthPercent = 500;
+  const midpoint = containerWidthPercent / 2;
+  const className =
+    "absolute bottom-0 top-0 w-1 before rounded-full -z-10 text-sm bg-gruv-red-bg before:absolute before:bottom-full before:min-w-max before:-translate-x-1/2 before:content-[attr(data-time)]";
+
+  // Computed values
+  let min = 0;
+  let max = 0;
+  if (startTime !== undefined && endTime !== undefined) {
+    min = Math.min(startTime, endTime);
+    max = Math.max(startTime, endTime);
+  }
+  const halfRange =
+    startTime === undefined || endTime === undefined ? 0 : (max - min) / 2;
+
   return (
-    <div className="absolute bottom-0 left-[calc(500%/2)] top-0 w-1 rounded-full bg-red-500/75" />
+    <>
+      <div
+        data-time={hourDecimalToTime(min, { is12HourTime: !is24HourTime })}
+        className={className}
+        style={{
+          left: `calc(${midpoint}% - (${halfRange} * 100%)/24)`,
+        }}
+      />
+      <div
+        data-time={hourDecimalToTime(max, { is12HourTime: !is24HourTime })}
+        className={className}
+        style={{ left: `calc(${midpoint}% + (${halfRange} * 100%)/24)` }}
+      />
+    </>
   );
 };
