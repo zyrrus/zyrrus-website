@@ -33,10 +33,3 @@ export const dateToHourDecimal = (time: Date, useUTC = false) => {
 
   return hours + minutes / 60;
 };
-
-export const toUTC = (offset: number) => {
-  let label = "UTC";
-  if (offset >= 0) label += "+" + offset;
-  else label += offset;
-  return label;
-};

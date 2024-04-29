@@ -8,7 +8,6 @@ import {
 import {
   dateToHourDecimal,
   hourDecimalToTime,
-  toUTC,
 } from "~/app/resources/(tools)/timezone/utils";
 
 export const useTimeZoneMultiSelect = () => {
@@ -16,12 +15,8 @@ export const useTimeZoneMultiSelect = () => {
 
   // Get Initial Time Zone
   useEffect(() => {
-    const offsetHours = new Date().getTimezoneOffset() / -60;
-
-    const item = TIME_ZONE_OPTIONS.find(
-      ({ group }) => group === toUTC(offsetHours),
-    );
-
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const item = TIME_ZONE_OPTIONS.find(({ value }) => value === timeZone);
     if (item) setSelectedTimeZones([item]);
   }, []);
 
