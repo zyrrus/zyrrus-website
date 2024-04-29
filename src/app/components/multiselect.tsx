@@ -11,6 +11,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "~/app/components/ui/command";
 import {
   Popover,
@@ -22,6 +23,7 @@ export interface MultiSelectItem {
   label: string;
   value: string;
   group?: string;
+  keywords?: string[];
 }
 
 export interface MultiSelectProps {
@@ -61,11 +63,18 @@ export function MultiSelect({
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-[250px] p-0">
-        <Command>
+        <Command
+          filter={(value, search, keywords) => {
+            const extendValue = value + " " + keywords?.join(" ");
+            if (extendValue.toLowerCase().includes(search.toLowerCase()))
+              return 1;
+            return 0;
+          }}
+        >
           <CommandInput placeholder={placeholder} />
-          <CommandEmpty>{emptyResult}</CommandEmpty>
+          <CommandList className="max-h-52 overflow-auto">
+            <CommandEmpty>{emptyResult}</CommandEmpty>
 
-          <div className="max-h-52 overflow-auto">
             {Object.entries(groupedOptions).map(([group, items]) => {
               return (
                 <CommandGroup heading={group} key={group}>
@@ -73,9 +82,9 @@ export function MultiSelect({
                     <CommandItem
                       key={item.value}
                       value={item.value}
+                      keywords={[item.group ?? "", ...(item?.keywords ?? [])]}
                       onSelect={() => {
                         onSelectToggle?.(item);
-                        // setOpen(false);
                       }}
                     >
                       <Check
@@ -90,7 +99,7 @@ export function MultiSelect({
                 </CommandGroup>
               );
             })}
-          </div>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
