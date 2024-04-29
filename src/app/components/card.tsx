@@ -1,5 +1,5 @@
 import { type VariantProps, cva } from "class-variance-authority";
-import { cn } from "~/app/utils/styles";
+import { cn } from "~/utils/client/styles";
 
 const cardVariants = cva("", {
   variants: {

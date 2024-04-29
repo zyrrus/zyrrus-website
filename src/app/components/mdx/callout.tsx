@@ -1,5 +1,5 @@
 import { type VariantProps, cva } from "class-variance-authority";
-import { cn } from "~/app/utils/styles";
+import { cn } from "~/utils/client/styles";
 import { GoAlert, GoInfo, GoPin } from "react-icons/go";
 import { type ReactNode } from "react";
 

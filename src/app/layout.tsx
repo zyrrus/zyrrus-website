@@ -5,9 +5,7 @@ import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import { TRPCReactProvider } from "~/trpc/react";
 import { ThemeProvider } from "~/app/components/theme/theme-provider";
-import { Navigation } from "~/app/components/navigation/navigation";
 import { type PropsWithChildren } from "react";
-import { Footer } from "~/app/components/navigation/footer";
 import { Toaster } from "~/app/components/ui/toaster";
 
 const inter = Inter({
@@ -25,7 +23,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body
-        className={`font-sans ${inter.variable} relative text-primary bg-0 `}
+        className={`font-sans ${inter.variable} relative bg-neutral-50 text-primary bg-dot-neutral-400/[0.2] selection:bg-accent selection:text-neutral-900 dark:bg-neutral-800 dark:bg-dot-neutral-600/[0.2]`}
       >
         <TRPCReactProvider headers={headers()}>
           <ThemeProvider
@@ -34,9 +32,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             enableSystem
             disableTransitionOnChange
           >
-            <Navigation />
             {children}
-            <Footer />
             <Toaster />
           </ThemeProvider>
           <Analytics />

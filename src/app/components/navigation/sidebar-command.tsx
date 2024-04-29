@@ -40,17 +40,12 @@ const SidebarCommand = () => {
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Articles">
+          <CommandGroup heading="Writing">
             <CommandItem>Calendar</CommandItem>
             <CommandItem>Search Emoji</CommandItem>
             <CommandItem>Calculator</CommandItem>
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Projects">
-            <CommandItem>Profile</CommandItem>
-            <CommandItem>Billing</CommandItem>
-            <CommandItem>Settings</CommandItem>
-          </CommandGroup>
         </CommandList>
       </CommandDialog>
     </>

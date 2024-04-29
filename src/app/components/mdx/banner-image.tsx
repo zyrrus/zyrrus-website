@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Card } from "~/app/components/card";
 import { WiggleWrapper } from "~/app/components/wiggle-wrapper";
-import { cn } from "~/app/utils/styles";
+import { cn } from "~/utils/client/styles";
 
 const BannerImage: React.FC<{
   src: string;
