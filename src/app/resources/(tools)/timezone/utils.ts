@@ -1,5 +1,4 @@
 export const hourDecimalToTime = (hourDecimal: number) => {
-  console.log("TIME", hourDecimal);
   if (hourDecimal < 0) hourDecimal += 23;
   else if (hourDecimal >= 24) hourDecimal -= 24;
 

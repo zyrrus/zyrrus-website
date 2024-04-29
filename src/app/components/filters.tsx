@@ -59,11 +59,6 @@ export default function Filters<T extends Filterable>({
         item.tags && item.tags.some((tag) => activeFilters.includes(tag)),
     );
 
-    console.log("FILTERS:", filters);
-    console.log("ACTIVE FITLERS:", activeFilters);
-    console.log("ORIGINAL ITEMS:", originalItems);
-    console.log("FILTER RESULTS:", filterResults);
-
     setItems(filterResults.length > 0 ? filterResults : originalItems);
   };
 
