@@ -1,5 +1,5 @@
 import GridContainer from "~/app/components/grid-container";
-import { Navigation } from "~/app/components/navigation/navigation";
+import { Navigation } from "~/app/components/navigation/main-navigation";
 import { Footer } from "~/app/components/navigation/footer";
 
 export default function Resources() {
