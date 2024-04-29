@@ -22,6 +22,13 @@ import {
 } from "~/app/resources/(tools)/timezone/hooks";
 import { ResourceHeader } from "~/app/components/navigation/resource-header";
 
+/* TODO:
+ * - [x] replace 100vw with a container
+ * - [ ] make the time zone view mobile-friendly
+ * - [ ] update the time inputs to adhere to the 12/24-hour format (maybe use react-aria hooks)
+ * - [ ] add time range (start + end time inputs)
+ */
+
 export default function Page() {
   const { times, setIs24HourFormat } = useTimeFormat();
   const { ref: scrollRef, resetScroll } = useScrollControls();
@@ -163,62 +170,64 @@ const TimeZoneViewer = ({
   const [animationParent] = useAutoAnimate();
 
   return (
-    <div ref={scrollRef} className="relative mt-8 overflow-auto pb-4">
-      <div
-        ref={animationParent}
-        className="grid w-[500vw] grid-cols-5 gap-y-4 px-1"
-      >
-        {timeZones.map(({ label, value, group, offset }, index, arr) => {
-          return (
-            <React.Fragment key={value}>
-              <div />
-              {/* Individual Time Zone Row */}
-              {["Yesterday", "Today", "Tomorrow"].map((day) => (
-                <div
-                  key={day}
-                  className="transition-transform"
-                  style={{
-                    transform: `translateX(calc(${-timeToHourDecimal(
-                      timeString,
-                      {
-                        offset: offset!,
-                        isFirst: index === 0,
-                        firstUTCOffset: arr[0]!.offset!,
-                      },
-                    )}/24 * 100vw + 50vw))`,
-                  }}
-                >
-                  {/* Time Zone Day Label */}
-                  <p>
-                    {day} ({label} - {group})
-                  </p>
-                  {/* Time Zone Times */}
-                  <div className="mt-1 flex h-8 flex-row rounded-md bg-neutral-50 dark:bg-neutral-900">
-                    {times.map((value, index) => (
-                      <div
-                        key={index}
-                        className="relative w-[calc(100vw/12)] border border-neutral-200 dark:border-neutral-700"
-                      >
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-sm">
-                          {value}
+    <div ref={scrollRef} className="mt-8 overflow-auto pb-12">
+      <div className="relative w-full max-w-7xl">
+        <div
+          ref={animationParent}
+          className="grid w-[500%] grid-cols-5 gap-y-4"
+        >
+          {timeZones.map(({ label, value, group, offset }, index, arr) => {
+            return (
+              <React.Fragment key={value}>
+                <div />
+                {/* Individual Time Zone Row */}
+                {["Yesterday", "Today", "Tomorrow"].map((day) => (
+                  <div
+                    key={day}
+                    className="transition-transform"
+                    style={{
+                      transform: `translateX(calc(${-timeToHourDecimal(
+                        timeString,
+                        {
+                          offset: offset!,
+                          isFirst: index === 0,
+                          firstUTCOffset: arr[0]!.offset!,
+                        },
+                      )}/24 * 100% + 50%))`,
+                    }}
+                  >
+                    {/* Time Zone Day Label */}
+                    <p>
+                      {day} ({label} - {group})
+                    </p>
+                    {/* Time Zone Times */}
+                    <div className="mt-1 flex h-8 flex-row rounded-md bg-neutral-50 dark:bg-neutral-900">
+                      {times.map((value, index) => (
+                        <div
+                          key={index}
+                          className="relative w-[calc(100%/12)] border border-neutral-200 dark:border-neutral-700"
+                        >
+                          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-sm">
+                            {value}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-              <div />
-            </React.Fragment>
-          );
-        })}
+                ))}
+                <div />
+              </React.Fragment>
+            );
+          })}
+        </div>
+        <CurrentTimeIndicator />
       </div>
-      <CurrentTimeIndicator />
     </div>
   );
 };
 
 const CurrentTimeIndicator = () => {
   return (
-    <div className="absolute bottom-0 left-[calc(500vw/2)] top-0 w-1 rounded-full bg-red-500/75" />
+    <div className="absolute bottom-0 left-[calc(500%/2)] top-0 w-1 rounded-full bg-red-500/75" />
   );
 };
