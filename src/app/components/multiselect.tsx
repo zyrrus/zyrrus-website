@@ -65,7 +65,7 @@ export function MultiSelect({
           <CommandInput placeholder={placeholder} />
           <CommandEmpty>{emptyResult}</CommandEmpty>
 
-          <CommandGroup className="max-h-52 overflow-auto">
+          <div className="max-h-52 overflow-auto">
             {Object.entries(groupedOptions).map(([group, items]) => {
               return (
                 <CommandGroup heading={group} key={group}>
@@ -90,7 +90,7 @@ export function MultiSelect({
                 </CommandGroup>
               );
             })}
-          </CommandGroup>
+          </div>
         </Command>
       </PopoverContent>
     </Popover>
