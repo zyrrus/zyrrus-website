@@ -2,7 +2,6 @@
 
 import React from "react";
 import { X, Trash2 } from "lucide-react";
-import { BreadcrumbNav } from "~/app/components/navigation/breadcrumb-nav";
 import { MultiSelect } from "~/app/components/multiselect";
 import { Badge } from "~/app/components/ui/badge";
 import { Button } from "~/app/components/ui/button";
@@ -21,6 +20,7 @@ import {
   useTimeSelect,
   useTimeZoneMultiSelect,
 } from "~/app/resources/(tools)/timezone/hooks";
+import { ResourceHeader } from "~/app/components/navigation/resource-header";
 
 export default function Page() {
   const { times, setIs24HourFormat } = useTimeFormat();
@@ -31,13 +31,10 @@ export default function Page() {
 
   return (
     <>
-      <div className="mx-auto mt-10 max-w-7xl px-6">
-        <BreadcrumbNav
-          routes={[{ label: "Resources", href: "/resources" }]}
-          page="Time Zone Visualization"
-          className=""
-        />
-      </div>
+      <ResourceHeader
+        routes={[{ label: "Resources", href: "/resources" }]}
+        page="Time Zone Visualization"
+      />
       <main className="my-20">
         <div className="mx-auto max-w-7xl px-6">
           <h1 className="text-2xl font-semibold">Time Zone</h1>

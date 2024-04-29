@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "~/app/components/ui/breadcrumb";
 
-interface BreadcrumbNavProps {
+export interface BreadcrumbNavProps {
   routes?: { label: string; href: string }[];
   page: string;
   className?: string;

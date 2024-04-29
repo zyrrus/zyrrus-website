@@ -1,16 +1,16 @@
 import { Card } from "~/app/components/card";
-import { BreadcrumbNav } from "~/app/components/navigation/breadcrumb-nav";
+import { ResourceHeader } from "~/app/components/navigation/resource-header";
 
 export default function HttpStatusCodes() {
   return (
-    <div className="mx-auto mt-10 max-w-7xl px-6">
-      <BreadcrumbNav
+    <>
+      <ResourceHeader
         routes={[{ label: "Resources", href: "/resources" }]}
         page="HTTP Status Codes"
         className=""
       />
-      <main className="">
-        <h1 className="mt-20 text-2xl font-semibold">HTTP Status Codes</h1>
+      <main className="mx-auto my-20 max-w-7xl px-6">
+        <h1 className="text-2xl font-semibold">HTTP Status Codes</h1>
         <p className="mt-2 text-xl text-secondary">
           A quick reference for developers to decipher server responses or
           refine your own endpoints.
@@ -135,7 +135,7 @@ export default function HttpStatusCodes() {
           />
         </div>
       </main>
-    </div>
+    </>
   );
 }
 
