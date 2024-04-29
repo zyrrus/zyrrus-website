@@ -289,29 +289,38 @@ const CurrentTimeIndicator = ({
     "absolute bottom-0 top-0 w-1 before rounded-full -z-10 text-sm bg-gruv-red-bg before:absolute before:bottom-full before:min-w-max before:-translate-x-1/2 before:content-[attr(data-time)]";
 
   // Computed values
-  let min = 0;
-  let max = 0;
-  if (startTime !== undefined && endTime !== undefined) {
-    min = Math.min(startTime, endTime);
-    max = Math.max(startTime, endTime);
-  }
+  let min = startTime;
+  let max = endTime;
+  if (min && max && min > max) [min, max] = [max, min];
   const halfRange =
-    startTime === undefined || endTime === undefined ? 0 : (max - min) / 2;
+    min === undefined ||
+    max === undefined ||
+    startTime === undefined ||
+    endTime === undefined
+      ? 0
+      : (max - min) / 2;
+
+  console.log("Start", startTime, "End", endTime);
+  console.log("Min", min, "Max", max);
 
   return (
     <>
-      <div
-        data-time={hourDecimalToTime(min, { is12HourTime: !is24HourTime })}
-        className={className}
-        style={{
-          left: `calc(${midpoint}% - (${halfRange} * 100%)/24)`,
-        }}
-      />
-      <div
-        data-time={hourDecimalToTime(max, { is12HourTime: !is24HourTime })}
-        className={className}
-        style={{ left: `calc(${midpoint}% + (${halfRange} * 100%)/24)` }}
-      />
+      {min !== undefined && (
+        <div
+          data-time={hourDecimalToTime(min, { is12HourTime: !is24HourTime })}
+          className={className}
+          style={{
+            left: `calc(${midpoint}% - (${halfRange} * 100%)/24)`,
+          }}
+        />
+      )}
+      {max !== undefined && (
+        <div
+          data-time={hourDecimalToTime(max, { is12HourTime: !is24HourTime })}
+          className={className}
+          style={{ left: `calc(${midpoint}% + (${halfRange} * 100%)/24)` }}
+        />
+      )}
     </>
   );
 };
