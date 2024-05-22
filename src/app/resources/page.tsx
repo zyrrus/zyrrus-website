@@ -24,6 +24,12 @@ export default function Resources() {
               tags: ["Tool", "Visualization"],
               route: "/resources/timezone",
             },
+            {
+              title: "Image Metadata",
+              date: "5/21/2024",
+              tags: ["Tool"],
+              route: "/resources/image-metadata",
+            },
 
             // {
             //   title: "Tailwind Cheat Sheet",
@@ -43,12 +49,7 @@ export default function Resources() {
             //   tags: ["Reference", "Web", "Cheat Sheet"],
             //   route: "/resources/",
             // },
-            // {
-            //   title: "Metadata Remover",
-            //   date: "4/10/2024",
-            //   tags: ["Tool"],
-            //   route: "/resources/",
-            // },
+
             // {
             //   title: "Typing Game",
             //   date: "4/10/2024",
